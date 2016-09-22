@@ -4,21 +4,42 @@ using System.Collections;
 public class DuaeController : MonoBehaviour {
 
 	// *** PLAYER VARIABLES ***
+	// ************************
 	public GameObject Duae;
 	private Collider2D DuaeCollider;
 	private Rigidbody2D DuaeRigidbody;
 
+
 	// *** PHYSICS VARIABLES ***
+	// *************************
 	public Vector2 moveDirection;
 
 	public LayerMask whatIsGround;
 	private float distToGround;
 
-	//*** PLAYER STATE ***
-	private bool isUncloaked = false;
+	//--CLOAKED--
+	public float cloakedMoveSpeed = 7f;
+	public float cloakedJumpForce = 10f;
+
+	//--UNCLOAKED--
+	public float uncloakedMoveSpeed = 5f;
+	public float uncloakedMinMoveSpeed = 5f;
+	public float uncloakedMaxMoveSpeed = 15f;
+	public float uncloakedJumpForce = 3f;
+	public float uncloakedIncreaseInterval;
+	public float uncloakedIntervalTimer;
+	public float uncloakedIncreaseAmount;
+	 
+
+
+	//*** PLAYER STATES ***
+	//*********************
+	public bool isUncloaked = false;
+
 
 	//** DEBUGING VARIABLES**
 	//public float extradist;
+
 
 	// Use this for initialization
 	void Start () {
@@ -43,11 +64,12 @@ public class DuaeController : MonoBehaviour {
 		//Debug.DrawRay (transform.position, Vector3.down * dist);
 		//Debug.Log (IsGrounded ());
 
-		//Debug.Log (DuaeRigidbody.velocity.y);
+		Debug.Log (DuaeRigidbody.velocity.y);
 		//Debug.Log (DuaeRigidbody.drag);
 
 	
 	}
+
 
 	void FixedUpdate(){
 		if(isUncloaked == false){
@@ -55,17 +77,16 @@ public class DuaeController : MonoBehaviour {
 		}else
 			if(isUncloaked == true){
 			Uncloaked ();
-			}
-			
+			}	
 	}
+
 
 	// *** MOVEMENT WHEN CLOAKED ***
 	public void Cloaked(){
-		float cloakedMoveSpeed = 7f;
-		float cloakedJumpForce = 13f;
 
-		Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("DarkWorld"), true);
-		//DuaeRigidbody.drag = 5f;
+		Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"),LayerMask.NameToLayer("DarkWorld"), true);
+		Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"),LayerMask.NameToLayer("LightWorld"), false);
+
 		DuaeRigidbody.freezeRotation = true;
 		moveDirection.x = Input.GetAxis("Horizontal") * cloakedMoveSpeed;
 		DuaeRigidbody.velocity = new Vector2(moveDirection.x, DuaeRigidbody.velocity.y);
@@ -83,23 +104,42 @@ public class DuaeController : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D collider){
-		print (collider.gameObject.layer);
-	}
 	// *** MOVEMENT WHEN UNCLOAKED ***	
 	public void Uncloaked(){
-		float uncloakedMoveSpeed = 15f;
-		float uncloakedJumpForce = 3f;
 
-		//DuaeRigidbody.gravityScale = 9.8f;
+		Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"),LayerMask.NameToLayer("DarkWorld"), false);
+		Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"),LayerMask.NameToLayer("LightWorld"), true);
+
+		DuaeRigidbody.drag = -.5f;
 		DuaeRigidbody.freezeRotation = true;
 		moveDirection.x = Input.GetAxis("Horizontal") * uncloakedMoveSpeed;
+
 		DuaeRigidbody.velocity = new Vector2(moveDirection.x, DuaeRigidbody.velocity.y);
+
 
 		if(IsGrounded() && Input.GetKey(KeyCode.Space)){
 			DuaeRigidbody.velocity = new Vector2 (DuaeRigidbody.velocity.x, uncloakedJumpForce);
 		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// *** GROUND CHECK FUNCTION ***
 	public bool IsGrounded(){
@@ -107,5 +147,25 @@ public class DuaeController : MonoBehaviour {
 
 	}
 
+
+	// *** INCREASE SPEED FUNCTION ****
+	public float IncreaseSpeed(float subjectMoveSpeed, float increaseInterval, float intervalTimer, float increaseAmount){
+		if(intervalTimer <= 0){
+			subjectMoveSpeed += increaseAmount;
+			intervalTimer = increaseInterval;
+		}else
+			if(intervalTimer > 0){
+				intervalTimer = intervalTimer -Time.deltaTime;
+			}
+		print ("ucm " + subjectMoveSpeed);
+		print ("it " + intervalTimer);
+		return subjectMoveSpeed;
+	}
+
+	//STUFF FOR TESTING JUMP INTERPOLATIOIN
+	/*public void Fall(){
+		//DuaeRigidbody.velocity = new Vector2 (DuaeRigidbody.velocity.x, 0f);
+		//DuaeRigidbody.gravityScale = 1f;
+	}*/
 
 }
