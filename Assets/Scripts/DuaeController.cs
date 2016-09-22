@@ -64,6 +64,7 @@ public class DuaeController : MonoBehaviour {
 		float cloakedMoveSpeed = 7f;
 		float cloakedJumpForce = 13f;
 
+		Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("DarkWorld"), true);
 		//DuaeRigidbody.drag = 5f;
 		DuaeRigidbody.freezeRotation = true;
 		moveDirection.x = Input.GetAxis("Horizontal") * cloakedMoveSpeed;
@@ -82,6 +83,9 @@ public class DuaeController : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter2D(Collision2D collider){
+		print (collider.gameObject.layer);
+	}
 	// *** MOVEMENT WHEN UNCLOAKED ***	
 	public void Uncloaked(){
 		float uncloakedMoveSpeed = 15f;
