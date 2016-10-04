@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		lastPlayerPosition = thePlayer.transform.position;
 
-		if(Input.GetKeyDown(KeyCode.LeftShift)){
+		if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
 			ShiftWorlds ();
 		}
 	

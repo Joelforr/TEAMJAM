@@ -4,13 +4,17 @@ using System.Collections;
 public class PlayerManager : MonoBehaviour {
 
 	public PlatformerMotor2D motorScript;
+	public SpriteRenderer Background;
+
+	Color lightWorld = new Color32(180, 130, 180, 255);
+		Color darkWorld = new Color32(140, 40, 140, 255);
 
 	public enum PlayerState{
 		Cloaked,
 		Uncloaked
 	}
 
-	public PlayerState duaeState;	
+	public PlayerState duaeState;
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +27,7 @@ public class PlayerManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKeyDown(KeyCode.LeftShift)){
+		if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
 			print("Times Pressed:");
 			duaeState = ChangePlayerState (duaeState);
 		}
@@ -40,6 +44,7 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.jumpHeight = 8f;
 			motorScript.extraJumpHeight = 4.5f;
 			motorScript.numOfAirJumps = 1;
+			Background.GetComponent<SpriteRenderer>().color = lightWorld;
 		}
 
 		if(duaeState == PlayerState.Uncloaked ){
@@ -54,23 +59,18 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.jumpHeight = 5f;
 			motorScript.extraJumpHeight = 3.5f;
 			motorScript.numOfAirJumps = 0;
+			Background.GetComponent<SpriteRenderer>().color = darkWorld;
 		}
-
-
-	}
-
-	void FixedUpdate() {
-		
 	}
 
 	PlayerState ChangePlayerState(PlayerState currentState){
 		print ("CurState" + currentState);
-		if (currentState == PlayerState.Cloaked)
-			currentState = PlayerState.Uncloaked;
-		else if (currentState == PlayerState.Uncloaked)
-			currentState = PlayerState.Cloaked;
+	if (currentState == PlayerState.Cloaked)
+		currentState = PlayerState.Uncloaked;
+	else if (currentState == PlayerState.Uncloaked)
+		currentState = PlayerState.Cloaked;
 
-		return currentState;
+	return currentState;
 	}
 
 }
