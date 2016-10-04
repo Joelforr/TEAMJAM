@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerMotor2D : MonoBehaviour {
@@ -166,6 +167,31 @@ public class PlayerMotor2D : MonoBehaviour {
 	/// the difference between environment heights. Play around until a nice value is found.
 	/// </summary>
 	public float distanceToCheckToStick = 0.4f;
+
+	/// <summary>
+	/// This is the size of a valid check (normalized to collider height) that will consider wall interactions valid.
+	/// Starts from the top of the collider and moves down.
+	/// </summary>
+	[Range(0.1f, 1f)]
+	public float normalizedValidWallInteraction = 0.2f;
+
+	/// <summary>
+	/// After a corner or wall jump, this is how longer horizontal input is ignored.
+	/// </summary>
+	public float ignoreMovementAfterJump = 0.2f;
+
+	/// <summary>
+	/// Cooldown for allowing slides, sticks, and corner grabs. This may be necessary if the motor can slide down a vertical
+	/// moving platform. If they don't exist then this can be 0.
+	/// </summary>
+	public float wallInteractionCooldown = 0.1f;
+
+	/// <summary>
+	/// The threshold that normalizedXMovement will have to be higher than to consider wall sticks, wall slides, wall jumps,
+	/// and corner grabs.
+	/// </summary>
+	[Range(0f, 1f)]
+	public float wallInteractionThreshold = 0.5f;
 
 
 

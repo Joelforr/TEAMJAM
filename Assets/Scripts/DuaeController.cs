@@ -137,10 +137,6 @@ public class DuaeController : MonoBehaviour {
 
 
 
-
-
-
-
 	// *** GROUND CHECK FUNCTION ***
 	public bool IsGrounded(){
 		return Physics2D.Raycast(transform.position, Vector2.down, distToGround + .1f, whatIsGround);

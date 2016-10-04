@@ -2209,6 +2209,7 @@ public class PlatformerMotor2D : MonoBehaviour
                 else if (_wallInfo.stickFrames < 0)
                 {
                     ChangeState(enableWallSlides ? MotorState.WallSliding : MotorState.Falling);
+					// ? is a in line if else, if ewallslides is enabled 
                 }
             }
         }
