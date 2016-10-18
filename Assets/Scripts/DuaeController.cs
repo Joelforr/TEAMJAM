@@ -8,7 +8,7 @@ public class DuaeController : MonoBehaviour {
 	public GameObject Duae;
 	private Collider2D DuaeCollider;
 	private Rigidbody2D DuaeRigidbody;
-
+	public Sprite Background;
 
 	// *** PHYSICS VARIABLES ***
 	// *************************
