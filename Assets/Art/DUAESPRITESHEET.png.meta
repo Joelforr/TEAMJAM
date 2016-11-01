@@ -1,0 +1,311 @@
+fileFormatVersion: 2
+guid: 97f2b6ed477f24b92990337cb9de79b6
+timeCreated: 1477424518
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DUAESPRITESHEET_0
+    21300002: DUAESPRITESHEET_1
+    21300004: DUAESPRITESHEET_2
+    21300006: DUAESPRITESHEET_3
+    21300008: DUAESPRITESHEET_4
+    21300010: DUAESPRITESHEET_5
+    21300012: DUAESPRITESHEET_6
+    21300014: DUAESPRITESHEET_7
+    21300016: DUAESPRITESHEET_8
+    21300018: DUAESPRITESHEET_9
+    21300020: DUAESPRITESHEET_10
+    21300022: DUAESPRITESHEET_11
+    21300024: DUAESPRITESHEET_12
+    21300026: DUAESPRITESHEET_13
+    21300028: DUAESPRITESHEET_14
+    21300030: DUAESPRITESHEET_15
+    21300032: DUAESPRITESHEET_16
+    21300034: DUAESPRITESHEET_17
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_0
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 2273
+        width: 236
+        height: 932
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_1
+      rect:
+        serializedVersion: 2
+        x: 2159
+        y: 2273
+        width: 236
+        height: 932
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_2
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 2353
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_3
+      rect:
+        serializedVersion: 2
+        x: 3992
+        y: 2273
+        width: 236
+        height: 932
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_4
+      rect:
+        serializedVersion: 2
+        x: 4231
+        y: 2352
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_5
+      rect:
+        serializedVersion: 2
+        x: 2396
+        y: 2343
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_6
+      rect:
+        serializedVersion: 2
+        x: 4229
+        y: 2342
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_7
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 1155
+        width: 239
+        height: 934
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_8
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 1236
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_9
+      rect:
+        serializedVersion: 2
+        x: 2159
+        y: 1155
+        width: 237
+        height: 931
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_10
+      rect:
+        serializedVersion: 2
+        x: 3992
+        y: 1155
+        width: 236
+        height: 931
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_11
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 1226
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_12
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 36
+        width: 239
+        height: 936
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_13
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 118
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_14
+      rect:
+        serializedVersion: 2
+        x: 2159
+        y: 36
+        width: 236
+        height: 936
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_15
+      rect:
+        serializedVersion: 2
+        x: 2398
+        y: 118
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_16
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 109
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAESPRITESHEET_17
+      rect:
+        serializedVersion: 2
+        x: 2396
+        y: 109
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
