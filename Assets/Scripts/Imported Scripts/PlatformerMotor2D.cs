@@ -1,6 +1,7 @@
 using System;
 using PC2D;
 using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class PlatformerMotor2D : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlatformerMotor2D : MonoBehaviour
     /// The static environment check mask. This should only be environment that doesn't move.
     /// </summary>
     public LayerMask staticEnvLayerMask;
+
+	public LayerMask dynamicEnvLayerMask;
 
     /// <summary>
     /// How far out the motor will check for the environment mask. This value can be tweaked if jump checks are not firing when
@@ -23,6 +26,7 @@ public class PlatformerMotor2D : MonoBehaviour
     /// </summary>
     public float minDistanceFromEnv = 0.02f;
 
+	public float minDistanceToGroundSlam = 20;
     /// <summary>
     /// The number of iterations the motor is allowed to make during the fixed update. Lower number will be more performant
     /// at a cost of losing some movement when collisions occur.
@@ -251,6 +255,8 @@ public class PlatformerMotor2D : MonoBehaviour
     /// </summary>
     public float cornerDistanceCheck = 0.2f;
 
+	public bool enableObjectPushing = true;
+
     /// <summary>
     /// This is the size of a valid check (normalized to collider height) that will consider wall interactions valid.
     /// Starts from the top of the collider and moves down.
@@ -276,6 +282,7 @@ public class PlatformerMotor2D : MonoBehaviour
     [Range(0f, 1f)]
     public float wallInteractionThreshold = 0.5f;
 
+	public bool enableDestruction = false;
     /// <summary>
     /// Is dashing allowed?
     /// </summary>
@@ -366,6 +373,8 @@ public class PlatformerMotor2D : MonoBehaviour
     /// Internal gizmos for iteration debugging.
     /// </summary>
     public bool iterationDebug;
+
+	public List<RaycastHit2D> interactableObjectsHit;
 
     /// <summary>
     /// The states the motor can be in.
@@ -1060,6 +1069,7 @@ public class PlatformerMotor2D : MonoBehaviour
     private bool _originalKinematic;
     private float _timeScale = 1;
     private Vector3 _previousLoc;
+	private float _prevAmountFallen;
     private Collider2D[] _collidersUpAgainst = new Collider2D[DIRECTIONS_CHECKED];
     private Vector2[] _collidedNormals = new Vector2[DIRECTIONS_CHECKED];
     private MotorState _prevState;
@@ -1224,6 +1234,7 @@ public class PlatformerMotor2D : MonoBehaviour
 
     private void Start()
     {
+		interactableObjectsHit = new List<RaycastHit2D>();
         _previousLoc = _collider2D.bounds.center;
         // initial set, do not use ChangeState
         motorState = MotorState.Falling;
@@ -1240,7 +1251,7 @@ public class PlatformerMotor2D : MonoBehaviour
         SetSlopeDegreeAllowed();
 
         ladderZone = LadderZone.Bottom;
-        _collisionMask = staticEnvLayerMask | movingPlatformLayerMask;
+		_collisionMask = staticEnvLayerMask | dynamicEnvLayerMask | movingPlatformLayerMask;
     }
 
     private void OnEnable()
@@ -1466,6 +1477,7 @@ public class PlatformerMotor2D : MonoBehaviour
         if (forceCheck)
         {
             collidingAgainst = CheckSurroundings(true);
+			interactableObjectsHit = CheckInteractableSurroundings (true);
         }
         else
         {
@@ -1483,6 +1495,7 @@ public class PlatformerMotor2D : MonoBehaviour
             else
             {
                 collidingAgainst = CheckSurroundings(false);
+				interactableObjectsHit = CheckInteractableSurroundings (false);
             }
         }
 
@@ -1635,7 +1648,7 @@ public class PlatformerMotor2D : MonoBehaviour
         UpdateTimers();
 
         // update _collisionMask in case it's updated by user
-        _collisionMask = staticEnvLayerMask | movingPlatformLayerMask;
+		_collisionMask = staticEnvLayerMask | dynamicEnvLayerMask | movingPlatformLayerMask;
 
         float time = Time.fixedDeltaTime;
         int iterations = 0;
@@ -1832,7 +1845,7 @@ public class PlatformerMotor2D : MonoBehaviour
     {
         _isValidWallInteraction = false;
 
-        if (!enableWallSlides && !enableCornerGrabs && !enableWallSticks)
+		if (!enableWallSlides && !enableCornerGrabs && !enableWallSticks && !enableObjectPushing)
         {
             // Don't need the unnecessary check!
             return;
@@ -1914,6 +1927,10 @@ public class PlatformerMotor2D : MonoBehaviour
         }
         else
         {
+			if(amountFallen > 0)
+			{
+				_prevAmountFallen = amountFallen;
+			}
             amountFallen = 0;
         }
 
@@ -2558,8 +2575,64 @@ public class PlatformerMotor2D : MonoBehaviour
             }
         }
 
+		if(enableDestruction && IsGrounded())
+		{
+			GetSpeedAndMaxSpeedOnGround(out speed, out maxSpeed);
+
+			if(interactableObjectsHit.Count == null){
+				return;
+			}else{
+				for(int i = 0; i < interactableObjectsHit.Count; i++)
+				{
+					if(interactableObjectsHit[i].collider.tag == "DestructableWall" &&
+						_velocity.x == -maxSpeed &&
+						_collidedNormals[DIRECTION_LEFT] == Vector2.right ||
+						interactableObjectsHit[i].collider.tag == "DestructableWall" &&
+						_velocity.x == maxSpeed &&
+						_collidedNormals[DIRECTION_RIGHT] == Vector2.left||
+						interactableObjectsHit[i].collider.tag == "DestructableGround" &&
+						_prevAmountFallen >= minDistanceToGroundSlam &&
+						_collidedNormals[DIRECTION_DOWN] == Vector2.up)
+					{
+						Destroy (interactableObjectsHit [i].collider.gameObject);
+						UpdateSurroundings (true);
+					}
+
+				}
+			}
+
+		}
+
+		if(enableObjectPushing && IsGrounded())
+		{
+			GetSpeedAndMaxSpeedOnGround (out speed, out maxSpeed);
+
+			if(interactableObjectsHit.Count == null){
+				return;
+			}else{
+				for(int i = 0;i < interactableObjectsHit.Count; i++)
+				{
+					if(interactableObjectsHit[i].collider.tag == "Pushable" &&
+						PressingIntoLeftWall())
+					{
+						Debug.Log("Trying to push left");
+						interactableObjectsHit [i].transform.position += (Vector3)_velocity * _currentDeltaTime;
+						UpdateSurroundings (true);
+					}
+
+					if(interactableObjectsHit[i].collider.tag == "Pushable" &&
+						PressingIntoRightWall())
+					{
+						Debug.Log("Trying to push right");
+						interactableObjectsHit [i].transform.position += (Vector3)_velocity * _currentDeltaTime;
+						UpdateSurroundings (true);
+					}
+				}
+			}
+		}
+
         // These mean we can't progress forward. Either a wall or a slope
-        if (HasFlag(CollidedSurface.LeftWall) &&
+       /* if (HasFlag(CollidedSurface.LeftWall) &&
             _velocity.x < 0 &&
             _collidedNormals[DIRECTION_LEFT] == Vector2.right ||
             HasFlag(CollidedSurface.RightWall) &&
@@ -2567,7 +2640,7 @@ public class PlatformerMotor2D : MonoBehaviour
             _collidedNormals[DIRECTION_RIGHT] == Vector2.left)
         {
             _velocity.x = 0;
-        }
+        }*/
 
         if (IsGrounded() &&
             _disallowedSlopeNormal != Vector2.zero &&
@@ -3296,6 +3369,44 @@ public class PlatformerMotor2D : MonoBehaviour
 
         return surfaces;
     }
+
+	private List<RaycastHit2D> CheckInteractableSurroundings(bool forceCheck){
+		List<RaycastHit2D> interactablesChecked = new List<RaycastHit2D>();
+
+		Vector2 vecToCheck = _velocity;
+
+		if(vecToCheck == Vector2.zero){
+			vecToCheck = Vector3.right * normalizedXMovement;
+		}
+
+		RaycastHit2D closesHit;
+
+		//LeftCheck
+		if(forceCheck || -vecToCheck.x >= -NEAR_ZERO){
+			closesHit = GetClosestHit (_collider2D.bounds.center, Vector3.left, envCheckDistance);
+			if(closesHit.collider != null){
+				interactablesChecked.Add (closesHit);
+			}
+		}
+
+		//RightCheck
+		if(forceCheck || vecToCheck.x >= NEAR_ZERO){
+			closesHit = GetClosestHit (_collider2D.bounds.center, Vector3.right, envCheckDistance);
+			if(closesHit.collider != null){
+				interactablesChecked.Add (closesHit);
+			}
+		}
+
+		//GroundCheck
+		if(forceCheck || -vecToCheck.y >= -NEAR_ZERO){
+			closesHit = GetClosestHit (_collider2D.bounds.center, Vector3.down, envCheckDistance);
+			if(closesHit.collider != null){
+				interactablesChecked.Add (closesHit);
+			}
+		}
+
+		return interactablesChecked;
+	}
 
     private float CalculateSpeedNeeded(float height)
     {

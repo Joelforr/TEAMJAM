@@ -57,6 +57,7 @@ public class PlayerManager : MonoBehaviour {
 
 		if(duaeState == PlayerState.Cloaked){
 			motorScript.staticEnvLayerMask = ((1 << LayerMask.NameToLayer("StaticEnvironment")) | (1 << LayerMask.NameToLayer("LightWorldEnvironment")));
+			motorScript.dynamicEnvLayerMask = 1 << LayerMask.NameToLayer ("DynamicEnvironment");
 			motorScript.groundSpeed = cloakedGroundSpeed;
 			motorScript.timeToGroundSpeed = cloakedTimeToGroundSpeed;
 			motorScript.groundStopDistance = cloakedGroundStopDistance;
@@ -67,11 +68,13 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.jumpHeight = cloakedJumpHeight;
 			motorScript.extraJumpHeight = cloakedExtraJumpHeight;
 			motorScript.numOfAirJumps = cloakedNumOfAirJumps;
+			motorScript.enableDestruction = false;
 			Background.GetComponent<SpriteRenderer>().color = lightWorld;
 		}
 
 		if(duaeState == PlayerState.Uncloaked ){
 			motorScript.staticEnvLayerMask = (1 << LayerMask.NameToLayer("StaticEnvironment") | 1 << LayerMask.NameToLayer("DarkWorldEnvironment"));
+			motorScript.dynamicEnvLayerMask = 1 << LayerMask.NameToLayer("DynamicEnvironment");
 			motorScript.groundSpeed = uncloakedGroundSpeed;
 			motorScript.timeToGroundSpeed = uncloakedTimeToGroundSpeed;
 			motorScript.groundStopDistance = uncloakedGroundStopDistance;
@@ -82,6 +85,7 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.jumpHeight = uncloakedJumpHeight;
 			motorScript.extraJumpHeight = uncloakedExtraJumpHeight;
 			motorScript.numOfAirJumps = uncloakedNumOfAirJumps;
+			motorScript.enableDestruction = true;
 			Background.GetComponent<SpriteRenderer>().color = darkWorld;
 		}
 	}
