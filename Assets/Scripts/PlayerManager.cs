@@ -6,10 +6,12 @@ public class PlayerManager : MonoBehaviour {
 	public PlatformerMotor2D motorScript;
 	public SpriteRenderer Background;
 
-	Color lightWorld = new Color32(180, 130, 180, 255);
-	Color darkWorld = new Color32(140, 40, 140, 255);
+	Color lightWorld = new Color32(180, 130, 180, 90);
+	Color darkWorld = new Color32(140, 40, 140, 90);
 
 	//EDITABLE PHYSICS VARIABLES
+	[Header("Cloaked Variables")]
+
 	public float cloakedGroundSpeed = 14f;
 	public float cloakedTimeToGroundSpeed = 0.1f;
 	public float cloakedGroundStopDistance = .333f;
@@ -20,6 +22,8 @@ public class PlayerManager : MonoBehaviour {
 	public float cloakedJumpHeight = 8f;
 	public float cloakedExtraJumpHeight = 4.5f;
 	public int cloakedNumOfAirJumps = 1;
+
+	[Header("Uncloaked Variables")]
 
 	public float uncloakedGroundSpeed = 30f;
 	public float uncloakedTimeToGroundSpeed = 1f;
