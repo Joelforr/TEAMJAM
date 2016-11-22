@@ -1602,7 +1602,7 @@ public class PlatformerMotor2D : MonoBehaviour
         if (IsGrounded())
         {
             Vector3 slopeDir = GetDownSlopeDir();
-
+			_prevAmountFallen = 0;
             if (IsForceSlipping() && _velocity != Vector2.zero && Mathf.Sign(_velocity.x) == Mathf.Sign(slopeDir.x))
             {
                 float speed = _velocity.magnitude;
@@ -2632,7 +2632,8 @@ public class PlatformerMotor2D : MonoBehaviour
 				for(int i = 0;i < interactableObjectsHit.Count; i++)
 				{
 					if(interactableObjectsHit[i].collider.tag == "Pushable" &&
-						PressingIntoLeftWall())
+						PressingIntoLeftWall() && 
+						interactableObjectsHit[i].normal == Vector2.right)
 					{
 						Debug.Log("Trying to push left");
 						interactableObjectsHit [i].transform.position += (Vector3)_velocity * .1f * _currentDeltaTime;
@@ -2640,7 +2641,8 @@ public class PlatformerMotor2D : MonoBehaviour
 					}
 
 					if(interactableObjectsHit[i].collider.tag == "Pushable" &&
-						PressingIntoRightWall())
+						PressingIntoRightWall() && 
+						interactableObjectsHit[i].normal == Vector2.left)
 					{
 						Debug.Log("Trying to push right");
 						interactableObjectsHit [i].transform.position += (Vector3)_velocity * .1f * _currentDeltaTime;
