@@ -6,6 +6,7 @@ public class PlayerMotor2D : MonoBehaviour {
 	
 	/*
 	public LayerMask staticEnvLayerMask;
+	public LayerMask dynamicEnvLayerMask;
 
 	public float envCheckDistance = 0.04f;
 	public float minDistanceFromEnv = 0.02f;
@@ -22,6 +23,7 @@ public class PlayerMotor2D : MonoBehaviour {
 
 	public float fallSpeed = 16f;
 	public float gravityMultiplier = 4;
+	public float minDistToGroundSlam;
 
 	public float jumpHeight = 1.5f;
 	public float extraJumpHeight = 1.5f;
@@ -147,26 +149,100 @@ public class PlayerMotor2D : MonoBehaviour {
 		_collisionMask = staticEnvLayerMask;
 	
 	}
+
+	private static Vector2 GetPointOnBounds(Bounds bounds, Vector3 toPoint)
+	{
+		// From http://stackoverflow.com/questions/4061576/finding-points-on-a-rectangle-at-a-given-angle
+		float angle = Vector3.Angle(Vector3.right, toPoint);
+
+		if (toPoint.y < 0)
+		{
+			angle = 360f - angle;
+		}
+
+		float multiplier = 1f;
+
+		if ((angle >= 0f && angle < 45f) ||
+			angle > 315f ||
+			(angle >= 135f && angle < 225f))
+		{
+
+			if (angle >= 135f && angle < 225f)
+			{
+				multiplier = -1f;
+			}
+
+			return new Vector2(
+				multiplier * bounds.size.x / 2 + bounds.center.x,
+				bounds.center.y + multiplier * ((bounds.size.x / 2) * Mathf.Tan(angle * Mathf.Deg2Rad)));
+		}
+
+		if (angle >= 225f)
+		{
+			multiplier = -1f;
+		}
+
+		return new Vector2(
+			bounds.center.x + multiplier * bounds.size.y / (2 * Mathf.Tan(angle * Mathf.Deg2Rad)),
+			multiplier * bounds.size.y / 2 + bounds.center.y);
+	}
+
+	private void UpdateVelocity(){
+		SetFacing ();
+
+		ApplyMovement ();
+
+
+	}
+
+	private float MoveMotor(){
+		Vector3 curPos = _collider2D.bounds.center;
+		Vector3 targetPos = _collider2D.bounds.center + (Vector3)_velocity * GetDeltaTime();
+
+		MovePosition (_collider2D.bounds.center + (Vector3)_velocity * GetDeltaTime ());
+
+		/*if((targetPos - _collider2D.bounds.center).sqrMagnitude < DISTANCE_TO_END_ITERATION * DISTANCE_TO_END_ITERATION)
+		{
+			return 0;
+		}
+
+		return Mathf.Lerp (_currentDeltaTime, 0,
+			(_collider2D.bounds.center - curPos).magnitude / (targetPos - curPos).magnitude);
+	}
+		
 	private void UpdateSurroundings (bool forceCheck){
-		if(forceCheck){
+
+		bool wasGrounded = IsGrounded ();
+
+		if (forceCheck) {
 			collidingAgaisnt = CheckSurroundings (true);
+			//interactableObjectsHit = CheckInteractableSurroundings(true);
 		}
 		else{
 
 			collidingAgaisnt = CheckSurroundings(false);
+			//interactableObjectsHit = CheckInteractableSurroundings(false);
 		}
 	}
 
 	private void UpdateState(bool forceSurrondingsCheck){
 
 		UpdateSurroundings(forceSurrondingsCheck);
+
+		CheckWallInteractionValidity ();
+
+		//UpdateInformationFromMovement ();
+
+		//HandlePostWallInteraction ();
+
+
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
 		//this is for cooldowns
 		//UpdateTimers();
-		_collisionMask = staticEnvLayerMask;
+		_collisionMask = staticEnvLayerMask | dynamicEnvLayerMask;
 
 		float time = Time.fixedDeltaTime;
 	
@@ -175,14 +251,80 @@ public class PlayerMotor2D : MonoBehaviour {
 	private float UpdateMotor(float deltaTime){
 		_currentDeltaTime = deltaTime;
 
+		//Phase One: Update Internal State (Colliders,State,Sprite)
 		if(_prevColliderBounds != _collider2D.bounds){
 			UpdateState (true);
 		}
 
+		//Phase Two: Update interal representation of velocity
+		//UpdateVelocity();
+
+		//Phase Three: Move the motor to the new location based off previous phase (and update falling)
+		//deltaTime = MoveMotor();	
+
+		HandleFalling ();
+
+		//Phase Four: Update internal state once more to account for any changes
+		UpdateState();
+		_prevColliderBounds = _collider2D;
+
+		return deltaTime;
+	}
+
+	private void SeperateFromEnvirionment(){
+		
+	}
+
+	private void RaycastAndSeparate(Vector2 dir, float distance){
+		RaycastHit2D hit = GetClosestHit(_collider2D.bounds.center, dir, distance, false,true);
+
+		if(hit.collider != null){
+			Vector2 pointOnCol = GetPointOnBounds (_collider2D.bounds, -hit.normal);
+			Vector3 toPointOnCol = pointOnCol - hit.point;
+			Vector3 pointToSepFrom = (Vector3)hit.point + Vector3.Project (toPointOnCol, -hit.normal);
+		}
+	}
+
+	private void CheckWallInteractionValidity(){
+		//_isValidWallInteraction = false;
+		//if(!enableWallSlides && !enableCornerGrabs && !enableWallSticks && !enableObjectPushing){
+		//return
+	    //}
+
+		Vector2 min = _collider2D.bounds.min;
+		Vector2 max = _collider2D.bounds.max;
+
+		if(HasFlag(CollidedSurface.LeftWall) && 
+			//_collidedNormals[DIRECTION_LEFT] == Vector2.right &&
+			normalizedXMovement < 0)
+		{
+			max.x = _collider2D.bounds.center.x;
+			min.x = min.x - envCheckDistance;
+		}
+		else if(HasFlag(CollidedSurface.RightWall) &&
+			//_collidedNormals[DIRECTION_RIGHT] == Vector2.left &&
+			normalizedXMovement > 0)
+		{
+			min.x = _collider2D.bounds.center.x;
+			max.x = max.x + envCheckDistance;
+		}
+		else
+		{
+			return;
+		}
+
+		//min.y = max.y - _collider2D.bounds.size.y * normalizedValidWallInteraction;
+
+		//_isValidWallInteraction = Physics2D.OverlapArea (min, max, _collisionMask) != null;
 	}
 
 	private bool HasFlag(CollidedSurface cs){
 		return(collidingAgaisnt & cs) != CollidedSurface.None;
+	}
+
+	private float GetDeltaTime(){
+		return _currentDeltaTime * _timeScale;
+			
 	}
 
 	private void HandleFalling(){
@@ -210,6 +352,7 @@ public class PlayerMotor2D : MonoBehaviour {
 			}
 		}
 	}
+
 	private void ApplyMovement(){
 		float speed;
 		float maxSpeed;
@@ -326,7 +469,7 @@ public class PlayerMotor2D : MonoBehaviour {
 	}
 
 	private float Accelerate(float speed, float acceleration, float limit){
-		speed += acceleration * Time.deltaTime;
+		speed += acceleration * GetDeltaTime();
 
 		if(acceleration > 0)
 		{
@@ -346,7 +489,7 @@ public class PlayerMotor2D : MonoBehaviour {
 
 	private float Decelerate(float speed, float deceleration, float limit){
 		if(speed < 0){
-			speed += deceleration * Time.deltaTime;
+			speed += deceleration * GetDeltaTime();
 
 			if(speed > limit)
 			{
@@ -354,7 +497,7 @@ public class PlayerMotor2D : MonoBehaviour {
 			}
 		}
 		else if(speed > 0){
-			speed -= deceleration * Time.deltaTime;
+			speed -= deceleration * GetDeltaTime();
 
 			if(speed < limit)
 			{

@@ -2616,17 +2616,23 @@ public class PlatformerMotor2D : MonoBehaviour
 						PressingIntoLeftWall())
 					{
 						Debug.Log("Trying to push left");
-						interactableObjectsHit [i].transform.position += (Vector3)_velocity * _currentDeltaTime;
+						interactableObjectsHit [i].rigidbody.isKinematic = false;
+						interactableObjectsHit [i].transform.position += (Vector3)_velocity * .1f * _currentDeltaTime;
 						UpdateSurroundings (true);
 					}
+					return;
 
 					if(interactableObjectsHit[i].collider.tag == "Pushable" &&
-						PressingIntoRightWall())
+						PressingIntoRightWall() && 
+						interactableObjectsHit[i].normal == Vector2.left)
 					{
 						Debug.Log("Trying to push right");
-						interactableObjectsHit [i].transform.position += (Vector3)_velocity * _currentDeltaTime;
+						interactableObjectsHit [i].rigidbody.isKinematic = false;
+						interactableObjectsHit [i].transform.position += (Vector3)_velocity * .1f * _currentDeltaTime;
 						UpdateSurroundings (true);
 					}
+					return;
+
 				}
 			}
 		}

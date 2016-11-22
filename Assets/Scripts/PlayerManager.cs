@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour {
 	Color darkWorld = new Color32(140, 40, 140, 255);
 
 	//EDITABLE PHYSICS VARIABLES
+	public float groundSmashDist =5f;
+
 	public float cloakedGroundSpeed = 14f;
 	public float cloakedTimeToGroundSpeed = 0.1f;
 	public float cloakedGroundStopDistance = .333f;
@@ -69,6 +71,11 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.extraJumpHeight = cloakedExtraJumpHeight;
 			motorScript.numOfAirJumps = cloakedNumOfAirJumps;
 			motorScript.enableDestruction = false;
+			motorScript.enableObjectPushing = false;
+			motorScript.enableWallSticks = false;
+			motorScript.enableWallJumps = false;
+			motorScript.enableWallSlides = false;
+			motorScript.enableCornerGrabs = false;
 			Background.GetComponent<SpriteRenderer>().color = lightWorld;
 		}
 
@@ -86,6 +93,12 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.extraJumpHeight = uncloakedExtraJumpHeight;
 			motorScript.numOfAirJumps = uncloakedNumOfAirJumps;
 			motorScript.enableDestruction = true;
+			motorScript.enableObjectPushing = true;
+			motorScript.enableWallSticks = true;
+			motorScript.enableWallJumps = true;
+			motorScript.enableWallSlides = true;
+			motorScript.enableCornerGrabs = true;
+			motorScript.minDistanceToGroundSlam = groundSmashDist;
 			Background.GetComponent<SpriteRenderer>().color = darkWorld;
 		}
 	}
