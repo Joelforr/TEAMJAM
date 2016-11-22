@@ -1602,7 +1602,7 @@ public class PlatformerMotor2D : MonoBehaviour
         if (IsGrounded())
         {
             Vector3 slopeDir = GetDownSlopeDir();
-
+			_prevAmountFallen = 0;
             if (IsForceSlipping() && _velocity != Vector2.zero && Mathf.Sign(_velocity.x) == Mathf.Sign(slopeDir.x))
             {
                 float speed = _velocity.magnitude;
@@ -2598,6 +2598,17 @@ public class PlatformerMotor2D : MonoBehaviour
 						UpdateSurroundings (true);
 					}
 
+					if (HasFlag(CollidedSurface.LeftWall) &&
+						_velocity.x < 0 &&
+						_collidedNormals[DIRECTION_LEFT] == Vector2.right && 
+						interactableObjectsHit[i].collider.tag == "DestructableWall"||
+						HasFlag(CollidedSurface.RightWall) &&
+						_velocity.x > 0 &&
+						_collidedNormals[DIRECTION_RIGHT] == Vector2.left &&
+						interactableObjectsHit[i].collider.tag == "DestructableWall")
+					{
+						_velocity.x = 0;
+					}
 				}
 			}
 
@@ -2608,32 +2619,46 @@ public class PlatformerMotor2D : MonoBehaviour
 			GetSpeedAndMaxSpeedOnGround (out speed, out maxSpeed);
 
 			if(interactableObjectsHit.Count == null){
-				return;
+				if (HasFlag(CollidedSurface.LeftWall) &&
+					_velocity.x < 0 &&
+					_collidedNormals[DIRECTION_LEFT] == Vector2.right ||
+					HasFlag(CollidedSurface.RightWall) &&
+					_velocity.x > 0 &&
+					_collidedNormals[DIRECTION_RIGHT] == Vector2.left)
+				{
+					_velocity.x = 0;
+				}
 			}else{
 				for(int i = 0;i < interactableObjectsHit.Count; i++)
 				{
 					if(interactableObjectsHit[i].collider.tag == "Pushable" &&
-						PressingIntoLeftWall())
+						PressingIntoLeftWall() && 
+						interactableObjectsHit[i].normal == Vector2.right)
 					{
 						Debug.Log("Trying to push left");
-						interactableObjectsHit [i].rigidbody.isKinematic = false;
 						interactableObjectsHit [i].transform.position += (Vector3)_velocity * .1f * _currentDeltaTime;
 						UpdateSurroundings (true);
 					}
-					return;
 
 					if(interactableObjectsHit[i].collider.tag == "Pushable" &&
 						PressingIntoRightWall() && 
 						interactableObjectsHit[i].normal == Vector2.left)
 					{
 						Debug.Log("Trying to push right");
-						interactableObjectsHit [i].rigidbody.isKinematic = false;
 						interactableObjectsHit [i].transform.position += (Vector3)_velocity * .1f * _currentDeltaTime;
 						UpdateSurroundings (true);
 					}
-					return;
-
 				}
+			}
+		}else{
+			if (HasFlag(CollidedSurface.LeftWall) &&
+				_velocity.x < 0 &&
+				_collidedNormals[DIRECTION_LEFT] == Vector2.right ||
+				HasFlag(CollidedSurface.RightWall) &&
+				_velocity.x > 0 &&
+				_collidedNormals[DIRECTION_RIGHT] == Vector2.left)
+			{
+				_velocity.x = 0;
 			}
 		}
 
