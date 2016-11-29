@@ -15,6 +15,7 @@ public class PlatformerMotor2D : MonoBehaviour
 
 	public LayerMask dynamicEnvLayerMask;
 
+
     /// <summary>
     /// How far out the motor will check for the environment mask. This value can be tweaked if jump checks are not firing when
     /// wanted.
@@ -26,7 +27,7 @@ public class PlatformerMotor2D : MonoBehaviour
     /// </summary>
     public float minDistanceFromEnv = 0.02f;
 
-	public float minDistanceToGroundSlam = 20;
+	public float minDistanceToGroundSlam = 10;
     /// <summary>
     /// The number of iterations the motor is allowed to make during the fixed update. Lower number will be more performant
     /// at a cost of losing some movement when collisions occur.
@@ -1086,6 +1087,7 @@ public class PlatformerMotor2D : MonoBehaviour
     private Vector2 _disallowedSlopeNormal;
     private Vector2 _previousMoveDir;
     private bool _isValidWallInteraction;
+	private bool _isOnNormalGround;
 
     // This is the unconverted motor velocity. This ignores slopes. It is converted into the appropriate vector before
     // moving.
@@ -1569,6 +1571,8 @@ public class PlatformerMotor2D : MonoBehaviour
         }
 
         CheckWallInteractionValidity();
+		CheckNormalGroundInteractionValidity();
+
 
         if (HasFlag(CollidedSurface.Ground))
         {
@@ -1580,6 +1584,8 @@ public class PlatformerMotor2D : MonoBehaviour
                 }
             }
         }
+
+
 
         AttachToMovingPlatforms();
 
@@ -1602,7 +1608,7 @@ public class PlatformerMotor2D : MonoBehaviour
         if (IsGrounded())
         {
             Vector3 slopeDir = GetDownSlopeDir();
-			//_prevAmountFallen = 0;
+
             if (IsForceSlipping() && _velocity != Vector2.zero && Mathf.Sign(_velocity.x) == Mathf.Sign(slopeDir.x))
             {
                 float speed = _velocity.magnitude;
@@ -1877,6 +1883,24 @@ public class PlatformerMotor2D : MonoBehaviour
 
         _isValidWallInteraction = Physics2D.OverlapArea(min, max, _collisionMask) != null;
     }
+
+	private void CheckNormalGroundInteractionValidity(){
+		_isOnNormalGround = false;
+
+		if (!enableDestruction)
+		{
+			// Don't need the unnecessary check!
+			return;
+		}
+
+		Vector2 min = _collider2D.bounds.min;
+		Vector2 max = _collider2D.bounds.max;
+
+		min.y = max.y - _collider2D.bounds.size.y * envCheckDistance;
+
+		_isOnNormalGround = Physics2D.Raycast (_collider2D.bounds.center, Vector2.down, envCheckDistance, staticEnvLayerMask) != null;
+	}
+
 
     private void SetLastJumpType()
     {
@@ -2584,6 +2608,10 @@ public class PlatformerMotor2D : MonoBehaviour
 			}else{
 				for(int i = 0; i < interactableObjectsHit.Count; i++)
 				{
+					if(interactableObjectsHit[i].collider.tag != "DestructableGround"){
+						_prevAmountFallen = 0;
+					}
+
 					if(interactableObjectsHit[i].collider.tag == "DestructableWall" &&
 						_velocity.x == -maxSpeed &&
 						_collidedNormals[DIRECTION_LEFT] == Vector2.right ||
@@ -2598,6 +2626,8 @@ public class PlatformerMotor2D : MonoBehaviour
 						UpdateSurroundings (true);
 					}
 
+
+					// If im running at a static wall set my velocity to 0
 					if (HasFlag(CollidedSurface.LeftWall) &&
 						_velocity.x < 0 &&
 						_collidedNormals[DIRECTION_LEFT] == Vector2.right && 

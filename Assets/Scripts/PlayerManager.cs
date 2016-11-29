@@ -6,11 +6,11 @@ public class PlayerManager : MonoBehaviour {
 	public PlatformerMotor2D motorScript;
 	public SpriteRenderer Background;
 
-	Color lightWorld = new Color32(180, 130, 180, 90);
-	Color darkWorld = new Color32(140, 40, 140, 90);
+	Color lightWorld = new Color32(180, 130, 180, 255);
+	Color darkWorld = new Color32(140, 40, 140, 255);
 
 	//EDITABLE PHYSICS VARIABLES
-	[Header("Cloaked Variables")]
+	public float groundSmashDist =5f;
 
 	public float cloakedGroundSpeed = 14f;
 	public float cloakedTimeToGroundSpeed = 0.1f;
@@ -22,8 +22,6 @@ public class PlayerManager : MonoBehaviour {
 	public float cloakedJumpHeight = 8f;
 	public float cloakedExtraJumpHeight = 4.5f;
 	public int cloakedNumOfAirJumps = 1;
-
-	[Header("Uncloaked Variables")]
 
 	public float uncloakedGroundSpeed = 30f;
 	public float uncloakedTimeToGroundSpeed = 1f;
@@ -73,6 +71,11 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.extraJumpHeight = cloakedExtraJumpHeight;
 			motorScript.numOfAirJumps = cloakedNumOfAirJumps;
 			motorScript.enableDestruction = false;
+			motorScript.enableObjectPushing = false;
+			motorScript.enableWallSticks = false;
+			motorScript.enableWallJumps = false;
+			motorScript.enableWallSlides = false;
+			motorScript.enableCornerGrabs = false;
 			Background.GetComponent<SpriteRenderer>().color = lightWorld;
 		}
 
@@ -90,6 +93,12 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.extraJumpHeight = uncloakedExtraJumpHeight;
 			motorScript.numOfAirJumps = uncloakedNumOfAirJumps;
 			motorScript.enableDestruction = true;
+			motorScript.enableObjectPushing = true;
+			motorScript.enableWallSticks = true;
+			motorScript.enableWallJumps = true;
+			motorScript.enableWallSlides = true;
+			motorScript.enableCornerGrabs = true;
+			motorScript.minDistanceToGroundSlam = groundSmashDist;
 			Background.GetComponent<SpriteRenderer>().color = darkWorld;
 		}
 	}
