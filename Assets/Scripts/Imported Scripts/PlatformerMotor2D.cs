@@ -2608,6 +2608,10 @@ public class PlatformerMotor2D : MonoBehaviour
 			}else{
 				for(int i = 0; i < interactableObjectsHit.Count; i++)
 				{
+					if(interactableObjectsHit[i].collider.tag != "DestructableGround"){
+						_prevAmountFallen = 0;
+					}
+
 					if(interactableObjectsHit[i].collider.tag == "DestructableWall" &&
 						_velocity.x == -maxSpeed &&
 						_collidedNormals[DIRECTION_LEFT] == Vector2.right ||
@@ -2622,6 +2626,8 @@ public class PlatformerMotor2D : MonoBehaviour
 						UpdateSurroundings (true);
 					}
 
+
+					// If im running at a static wall set my velocity to 0
 					if (HasFlag(CollidedSurface.LeftWall) &&
 						_velocity.x < 0 &&
 						_collidedNormals[DIRECTION_LEFT] == Vector2.right && 
