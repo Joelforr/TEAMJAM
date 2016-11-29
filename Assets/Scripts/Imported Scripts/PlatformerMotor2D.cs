@@ -1602,7 +1602,7 @@ public class PlatformerMotor2D : MonoBehaviour
         if (IsGrounded())
         {
             Vector3 slopeDir = GetDownSlopeDir();
-			_prevAmountFallen = 0;
+			//_prevAmountFallen = 0;
             if (IsForceSlipping() && _velocity != Vector2.zero && Mathf.Sign(_velocity.x) == Mathf.Sign(slopeDir.x))
             {
                 float speed = _velocity.magnitude;
