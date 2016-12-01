@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerManager : MonoBehaviour {
 
+	public WorldManager worldManagerScript;
 	public PlatformerMotor2D motorScript;
 	public SpriteRenderer Background;
 
@@ -45,6 +46,7 @@ public class PlayerManager : MonoBehaviour {
 	void Start () {
 		
 		duaeState = PlayerState.Cloaked;
+		worldManagerScript = FindObjectOfType<WorldManager>();
 		motorScript = GetComponent<PlatformerMotor2D> ();
 	
 	}
@@ -52,9 +54,10 @@ public class PlayerManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
+		if(worldManagerScript.ShiftValidtyCheck() && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))){
 			print("Times Pressed:");
 			duaeState = ChangePlayerState (duaeState);
+
 		}
 
 		if(duaeState == PlayerState.Cloaked){

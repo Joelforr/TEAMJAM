@@ -1,6 +1,7 @@
 using System;
 using PC2D;
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -1653,12 +1654,23 @@ public class PlatformerMotor2D : MonoBehaviour
 
         UpdateTimers();
 
+
         // update _collisionMask in case it's updated by user
 		_collisionMask = staticEnvLayerMask | dynamicEnvLayerMask | movingPlatformLayerMask;
 
         float time = Time.fixedDeltaTime;
         int iterations = 0;
         _iterationsUsed = 0;
+
+		if(UnityEngine.Input.GetKeyDown(KeyCode.LeftShift) || UnityEngine.Input.GetKeyDown(KeyCode.RightShift)){
+			UpdateSurroundings(true);
+			FreedomStateExit();
+			HandleFalling();
+			_velocity.y = -fallSpeed;
+			Debug.Log("SHIFTTTTTTTTT");
+		}
+
+	
 
         while (time > 0 && iterations < numOfIterations)
         {
@@ -1685,7 +1697,7 @@ public class PlatformerMotor2D : MonoBehaviour
         }
     }
 
-    private float UpdateMotor(float deltaTime)
+	private float UpdateMotor(float deltaTime)
     {
         _currentDeltaTime = deltaTime;
 
