@@ -4,13 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransition : MonoBehaviour {
 
-	public int level = 0;
+	public int level;
 
 	// Update is called once per frame
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Player"){
-			Debug.Log("Changing to Scene " + level);
-			SceneManager.LoadScene(level);
+
+			if (NiceSceneTransition.instance != null) {
+				NiceSceneTransition.instance.LoadScene(level);
+			}
+			else {
+				SceneManager.LoadScene(level);
+			}
 		}
 	}
 }

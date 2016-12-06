@@ -10,6 +10,8 @@ public class DustEffect : MonoBehaviour {
 		if (collider.gameObject.tag == "Breakable"){
 			leftParticle.gameObject.SetActive(true);
 			rightParticle.gameObject.SetActive(true);
+			AudioSource audio = GetComponent<AudioSource>();
+			audio.Play();
 		}
 	}
 }
