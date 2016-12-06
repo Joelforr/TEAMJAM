@@ -2665,7 +2665,7 @@ public class PlatformerMotor2D : MonoBehaviour
 						PressingIntoLeftWall() && 
 						interactableObjectsHit[i].normal == Vector2.right)
 					{
-						Debug.Log("Trying to push left");
+						//Debug.Log("Trying to push left");
 						interactableObjectsHit [i].transform.position += (Vector3)_velocity * .1f * _currentDeltaTime;
 						UpdateSurroundings (true);
 					}
