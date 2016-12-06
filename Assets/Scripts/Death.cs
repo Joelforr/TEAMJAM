@@ -23,7 +23,7 @@ public class Death : MonoBehaviour {
     void Start()
     {
         //gets checkpoints
-        CheckPoint = GameObject.FindGameObjectsWithTag("checkpoint");
+        CheckPoint = GameObject.FindGameObjectsWithTag("Checkpoint");
 
         // gets the string of the current scene
         _currScreen = SceneManager.GetActiveScene().name;
@@ -90,14 +90,11 @@ public class Death : MonoBehaviour {
             //send to checkpoint
             transform.position = CheckPos;
             PlatformMotor.groundSpeed = 0;
-            PlatformMotor.airSpeed = 0;
-                
-                          
-            
+            PlatformMotor.airSpeed = 0;            
             
         }
 
-        if (collider.gameObject.tag == "checkpoint")
+        if (collider.gameObject.tag == "Checkpoint")
         {
            // Debug.Log("check");
            //set checkpoint
