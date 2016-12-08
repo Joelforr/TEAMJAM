@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class FogRuler : MonoBehaviour {
 
 	public List<GameObject> FoWCloudsInScene;
@@ -17,8 +18,6 @@ public class FogRuler : MonoBehaviour {
 	
 		thePlayer = FindObjectOfType<PlayerManager>();
 		theCamera = Camera.main;
-
-
 	
 			
 	}

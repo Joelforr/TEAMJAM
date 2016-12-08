@@ -259,6 +259,9 @@ public class PlatformerMotor2D : MonoBehaviour
 
 	public bool enableObjectPushing = true;
 
+	[Range(0.1f,1f)]
+	public float pushSpeedMultiplier = .75f;
+
     /// <summary>
     /// This is the size of a valid check (normalized to collider height) that will consider wall interactions valid.
     /// Starts from the top of the collider and moves down.
@@ -387,6 +390,7 @@ public class PlatformerMotor2D : MonoBehaviour
         Jumping,
         Falling,
         FallingFast,
+		HeavyFalling,
         WallSliding,
         OnCorner,
         WallSticking,
@@ -972,6 +976,14 @@ public class PlatformerMotor2D : MonoBehaviour
     {
         return motorState == MotorState.FallingFast;
     }
+
+	///<summary>
+	/// Is the motor going to ground slam
+	/// </summary>
+	public bool IsHeavyFalling(){
+		return motorState == MotorState.HeavyFalling;
+	} 
+
     ///<summary>
     /// is the motor stick to a wall?
     /// Use PressingIntoLeftWall, PressingIntoRightWall to know what wall.
@@ -1930,10 +1942,12 @@ public class PlatformerMotor2D : MonoBehaviour
     {
         float diffInPositions = Mathf.Abs(_collider2D.bounds.center.y - _previousLoc.y);
 
-        if (IsFalling() || IsFallingFast())
+		if (IsFalling() || IsFallingFast() || IsHeavyFalling())
         {
             amountFallen += diffInPositions;
-
+			if(amountFallen >= minDistanceToGroundSlam){
+				motorState = MotorState.HeavyFalling;
+			}
             if (IsFallingFast() && _velocity.y <= -fallSpeed)
             {
                 amountFastFallen += diffInPositions;
@@ -2659,8 +2673,9 @@ public class PlatformerMotor2D : MonoBehaviour
 						PressingIntoLeftWall() && 
 						interactableObjectsHit[i].normal == Vector2.right)
 					{
-						Debug.Log("Trying to push left");
-						interactableObjectsHit [i].transform.position += (Vector3)_velocity * .1f * _currentDeltaTime;
+						//Debug.Log("Trying to push left");
+						_velocity = _velocity* pushSpeedMultiplier;
+						interactableObjectsHit [i].transform.position += (Vector3)_velocity /* .1f */* _currentDeltaTime;
 						UpdateSurroundings (true);
 					}
 
@@ -2668,8 +2683,9 @@ public class PlatformerMotor2D : MonoBehaviour
 						PressingIntoRightWall() && 
 						interactableObjectsHit[i].normal == Vector2.left)
 					{
-						Debug.Log("Trying to push right");
-						interactableObjectsHit [i].transform.position += (Vector3)_velocity * .1f * _currentDeltaTime;
+						//Debug.Log("Trying to push right");
+						_velocity = _velocity* pushSpeedMultiplier;
+						interactableObjectsHit [i].transform.position += (Vector3)_velocity /* .1f */* _currentDeltaTime;
 						UpdateSurroundings (true);
 					}
 				}
