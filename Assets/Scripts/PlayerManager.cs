@@ -6,8 +6,8 @@ public class PlayerManager : MonoBehaviour {
 	public PlatformerMotor2D motorScript;
 	public SpriteRenderer Background;
 
-	Color lightWorld = new Color32(180, 130, 180, 255);
-	Color darkWorld = new Color32(140, 40, 140, 255);
+	Color lightWorld = new Color32(180, 130, 180, 90);
+	Color darkWorld = new Color32(140, 40, 140, 90);
 
 	//EDITABLE PHYSICS VARIABLES
 	public float groundSmashDist =5f;

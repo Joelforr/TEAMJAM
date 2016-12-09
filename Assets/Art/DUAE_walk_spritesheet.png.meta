@@ -1,17 +1,16 @@
 fileFormatVersion: 2
-guid: c679f69c565d44b6ebdce060e84e0a75
-timeCreated: 1479252452
+guid: 5d9c9d20dfb2344779c19afd95059dfc
+timeCreated: 1480627275
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: DUAE_Idle_Spritesheet_0
-    21300002: DUAE_Idle_Spritesheet_1
-    21300004: DUAE_Idle_Spritesheet_2
-    21300006: DUAE_Idle_Spritesheet_3
-    21300008: DUAE_Idle_Spritesheet_4
-    21300010: DUAE_Idle_Spritesheet_5
-    21300012: DUAE_Idle_Spritesheet_6
-    21300014: DUAE_Idle_Spritesheet_7
+    21300000: DUAE_walk_spritesheet_0
+    21300002: DUAE_walk_spritesheet_1
+    21300004: DUAE_walk_spritesheet_2
+    21300006: DUAE_walk_spritesheet_3
+    21300008: DUAE_walk_spritesheet_4
+    21300010: DUAE_walk_spritesheet_5
+    21300012: DUAE_walk_spritesheet_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -52,7 +51,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 80
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
@@ -61,12 +60,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_0
+      name: DUAE_walk_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 1096
-        width: 116
+        x: 12
+        y: 1104
+        width: 168
         height: 352
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -74,25 +73,64 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_1
+      name: DUAE_walk_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 328
-        y: 1096
-        width: 116
+        x: 260
+        y: 1112
+        width: 176
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAE_walk_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1104
+        width: 180
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAE_walk_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 592
+        width: 168
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DUAE_walk_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 592
+        width: 176
         height: 352
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_2
+      name: DUAE_walk_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 584
-        y: 1096
-        width: 116
+        x: 524
+        y: 592
+        width: 168
         height: 348
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -100,65 +138,13 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_3
+      name: DUAE_walk_spritesheet_6
       rect:
         serializedVersion: 2
-        x: 72
-        y: 584
-        width: 116
-        height: 348
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_4
-      rect:
-        serializedVersion: 2
-        x: 328
-        y: 584
-        width: 116
-        height: 352
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 584
-        y: 584
-        width: 116
-        height: 352
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_6
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 72
-        width: 116
-        height: 348
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_7
-      rect:
-        serializedVersion: 2
-        x: 328
-        y: 72
-        width: 116
-        height: 348
+        x: 0
+        y: 84
+        width: 200
+        height: 340
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
