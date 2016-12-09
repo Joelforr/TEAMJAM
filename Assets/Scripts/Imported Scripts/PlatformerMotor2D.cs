@@ -1,6 +1,7 @@
 using System;
 using PC2D;
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -258,6 +259,9 @@ public class PlatformerMotor2D : MonoBehaviour
 
 	public bool enableObjectPushing = true;
 
+	[Range(0.1f,1f)]
+	public float pushSpeedMultiplier = .75f;
+
     /// <summary>
     /// This is the size of a valid check (normalized to collider height) that will consider wall interactions valid.
     /// Starts from the top of the collider and moves down.
@@ -386,6 +390,7 @@ public class PlatformerMotor2D : MonoBehaviour
         Jumping,
         Falling,
         FallingFast,
+		HeavyFalling,
         WallSliding,
         OnCorner,
         WallSticking,
@@ -971,6 +976,14 @@ public class PlatformerMotor2D : MonoBehaviour
     {
         return motorState == MotorState.FallingFast;
     }
+
+	///<summary>
+	/// Is the motor going to ground slam
+	/// </summary>
+	public bool IsHeavyFalling(){
+		return motorState == MotorState.HeavyFalling;
+	} 
+
     ///<summary>
     /// is the motor stick to a wall?
     /// Use PressingIntoLeftWall, PressingIntoRightWall to know what wall.
@@ -1087,7 +1100,7 @@ public class PlatformerMotor2D : MonoBehaviour
     private Vector2 _disallowedSlopeNormal;
     private Vector2 _previousMoveDir;
     private bool _isValidWallInteraction;
-	private bool _isOnNormalGround;
+
 
     // This is the unconverted motor velocity. This ignores slopes. It is converted into the appropriate vector before
     // moving.
@@ -1571,7 +1584,6 @@ public class PlatformerMotor2D : MonoBehaviour
         }
 
         CheckWallInteractionValidity();
-		CheckNormalGroundInteractionValidity();
 
 
         if (HasFlag(CollidedSurface.Ground))
@@ -1653,12 +1665,23 @@ public class PlatformerMotor2D : MonoBehaviour
 
         UpdateTimers();
 
+
         // update _collisionMask in case it's updated by user
 		_collisionMask = staticEnvLayerMask | dynamicEnvLayerMask | movingPlatformLayerMask;
 
         float time = Time.fixedDeltaTime;
         int iterations = 0;
         _iterationsUsed = 0;
+
+		if(UnityEngine.Input.GetKeyDown(KeyCode.LeftShift) || UnityEngine.Input.GetKeyDown(KeyCode.RightShift)){
+			UpdateSurroundings(true);
+			FreedomStateExit();
+			HandleFalling();
+			_velocity.y = -fallSpeed;
+			Debug.Log("SHIFTTTTTTTTT");
+		}
+
+	
 
         while (time > 0 && iterations < numOfIterations)
         {
@@ -1685,7 +1708,7 @@ public class PlatformerMotor2D : MonoBehaviour
         }
     }
 
-    private float UpdateMotor(float deltaTime)
+	private float UpdateMotor(float deltaTime)
     {
         _currentDeltaTime = deltaTime;
 
@@ -1883,24 +1906,7 @@ public class PlatformerMotor2D : MonoBehaviour
 
         _isValidWallInteraction = Physics2D.OverlapArea(min, max, _collisionMask) != null;
     }
-
-	private void CheckNormalGroundInteractionValidity(){
-		_isOnNormalGround = false;
-
-		if (!enableDestruction)
-		{
-			// Don't need the unnecessary check!
-			return;
-		}
-
-		Vector2 min = _collider2D.bounds.min;
-		Vector2 max = _collider2D.bounds.max;
-
-		min.y = max.y - _collider2D.bounds.size.y * envCheckDistance;
-
-		_isOnNormalGround = Physics2D.Raycast (_collider2D.bounds.center, Vector2.down, envCheckDistance, staticEnvLayerMask) != null;
-	}
-
+		
 
     private void SetLastJumpType()
     {
@@ -1936,10 +1942,12 @@ public class PlatformerMotor2D : MonoBehaviour
     {
         float diffInPositions = Mathf.Abs(_collider2D.bounds.center.y - _previousLoc.y);
 
-        if (IsFalling() || IsFallingFast())
+		if (IsFalling() || IsFallingFast() || IsHeavyFalling())
         {
             amountFallen += diffInPositions;
-
+			if(amountFallen >= minDistanceToGroundSlam){
+				motorState = MotorState.HeavyFalling;
+			}
             if (IsFallingFast() && _velocity.y <= -fallSpeed)
             {
                 amountFastFallen += diffInPositions;
@@ -2666,7 +2674,8 @@ public class PlatformerMotor2D : MonoBehaviour
 						interactableObjectsHit[i].normal == Vector2.right)
 					{
 						//Debug.Log("Trying to push left");
-						interactableObjectsHit [i].transform.position += (Vector3)_velocity * .1f * _currentDeltaTime;
+						_velocity = _velocity* pushSpeedMultiplier;
+						interactableObjectsHit [i].transform.position += (Vector3)_velocity /* .1f */* _currentDeltaTime;
 						UpdateSurroundings (true);
 					}
 
@@ -2675,7 +2684,8 @@ public class PlatformerMotor2D : MonoBehaviour
 						interactableObjectsHit[i].normal == Vector2.left)
 					{
 						//Debug.Log("Trying to push right");
-						interactableObjectsHit [i].transform.position += (Vector3)_velocity * .1f * _currentDeltaTime;
+						_velocity = _velocity* pushSpeedMultiplier;
+						interactableObjectsHit [i].transform.position += (Vector3)_velocity /* .1f */* _currentDeltaTime;
 						UpdateSurroundings (true);
 					}
 				}

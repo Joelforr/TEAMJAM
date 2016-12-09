@@ -1,0 +1,266 @@
+fileFormatVersion: 2
+guid: 809bbd5b48b328640b8d85c18b194d46
+timeCreated: 1481224406
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: HYBRID_walk_spritesheet_0
+    21300002: HYBRID_walk_spritesheet_1
+    21300004: HYBRID_walk_spritesheet_2
+    21300006: HYBRID_walk_spritesheet_3
+    21300008: HYBRID_walk_spritesheet_4
+    21300010: HYBRID_walk_spritesheet_5
+    21300012: HYBRID_walk_spritesheet_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: HYBRID_walk_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 48, y: -178}
+        - {x: 50, y: -130}
+        - {x: 54, y: -66}
+        - {x: 54, y: 123}
+        - {x: 24, y: 194}
+        - {x: -24, y: 194}
+        - {x: -29, y: 133}
+        - {x: -71, y: 123}
+        - {x: -77, y: 116}
+        - {x: -118, y: -80}
+        - {x: -118, y: -123}
+        - {x: -93, y: -178}
+        - {x: -63, y: -178}
+        - {x: -59, y: -137}
+        - {x: -6, y: -139}
+        - {x: 15, y: -178}
+    - name: HYBRID_walk_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 24, y: 194}
+        - {x: -25, y: 194}
+        - {x: -28, y: 133}
+        - {x: -78, y: 124}
+        - {x: -126, y: -77}
+        - {x: -126, y: -116}
+        - {x: -105, y: -147}
+        - {x: -99, y: -148}
+        - {x: -97, y: -162}
+        - {x: -94, y: -170}
+        - {x: -79, y: -170}
+        - {x: -50, y: -153}
+        - {x: -19, y: -169}
+        - {x: -16, y: -170}
+        - {x: 18, y: -170}
+        - {x: 52, y: -136}
+        - {x: 54, y: -91}
+        - {x: 54, y: 123}
+    - name: HYBRID_walk_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 54, y: 104}
+        - {x: 38, y: 148}
+        - {x: 37, y: 151}
+        - {x: 23, y: 181}
+        - {x: 18, y: 182}
+        - {x: -22, y: 182}
+        - {x: -25, y: 164}
+        - {x: -26, y: 118}
+        - {x: -80, y: 111}
+        - {x: -128, y: -108}
+        - {x: -128, y: -140}
+        - {x: -109, y: -149}
+        - {x: -73, y: -152}
+        - {x: -40, y: -178}
+        - {x: -9, y: -178}
+        - {x: -10, y: -160}
+        - {x: 51, y: -147}
+        - {x: 54, y: -117}
+    - name: HYBRID_walk_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 54, y: -89}
+        - {x: 54, y: 115}
+        - {x: 24, y: 186}
+        - {x: -22, y: 186}
+        - {x: -25, y: 168}
+        - {x: -25, y: 121}
+        - {x: -75, y: 119}
+        - {x: -118, y: -86}
+        - {x: -118, y: -134}
+        - {x: -114, y: -143}
+        - {x: -70, y: -163}
+        - {x: -60, y: -177}
+        - {x: -56, y: -178}
+        - {x: -34, y: -178}
+        - {x: -32, y: -167}
+        - {x: 25, y: -157}
+        - {x: 52, y: -131}
+    - name: HYBRID_walk_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51, y: -144}
+        - {x: 15, y: -178}
+        - {x: 48, y: -178}
+        - {x: 47, y: -177}
+        - {x: 54, y: -150}
+        - {x: 54, y: 138}
+        - {x: 24, y: 194}
+        - {x: -22, y: 194}
+        - {x: -25, y: 176}
+        - {x: -75, y: 127}
+        - {x: -118, y: -76}
+        - {x: -118, y: -153}
+        - {x: -115, y: -169}
+        - {x: -107, y: -178}
+        - {x: -95, y: -178}
+        - {x: -94, y: -176}
+        - {x: -94, y: -172}
+        - {x: -96, y: -170}
+    - name: HYBRID_walk_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 54, y: 108}
+        - {x: 52, y: 110}
+        - {x: 38, y: 156}
+        - {x: 37, y: 159}
+        - {x: 23, y: 189}
+        - {x: 18, y: 190}
+        - {x: -22, y: 190}
+        - {x: -25, y: 172}
+        - {x: -74, y: 123}
+        - {x: -118, y: -82}
+        - {x: -118, y: -127}
+        - {x: -113, y: -138}
+        - {x: -65, y: -169}
+        - {x: -35, y: -178}
+        - {x: 1, y: -178}
+        - {x: -2, y: -168}
+        - {x: 43, y: -170}
+        - {x: 54, y: -143}
+    - name: HYBRID_walk_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 74, y: -35}
+        - {x: 56, y: -20}
+        - {x: 54, y: 104}
+        - {x: 52, y: 106}
+        - {x: 38, y: 152}
+        - {x: 37, y: 155}
+        - {x: 23, y: 185}
+        - {x: 18, y: 186}
+        - {x: -22, y: 186}
+        - {x: -25, y: 168}
+        - {x: -80, y: 105}
+        - {x: -128, y: -88}
+        - {x: -128, y: -133}
+        - {x: -127, y: -139}
+        - {x: -98, y: -172}
+        - {x: -92, y: -174}
+        - {x: -21, y: -174}
+        - {x: 32, y: -157}
+        - {x: 50, y: -138}
+        - {x: 74, y: -64}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerManager : MonoBehaviour {
 
+	public WorldManager worldManagerScript;
 	public PlatformerMotor2D motorScript;
 	public SpriteRenderer Background;
 
@@ -36,7 +37,9 @@ public class PlayerManager : MonoBehaviour {
 
 	public enum PlayerState{
 		Cloaked,
-		Uncloaked
+		Uncloaked_Form1,
+		Uncloaked_Form2,
+		Uncloaked_Form3
 	}
 
 	public PlayerState duaeState;
@@ -45,6 +48,7 @@ public class PlayerManager : MonoBehaviour {
 	void Start () {
 		
 		duaeState = PlayerState.Cloaked;
+		worldManagerScript = FindObjectOfType<WorldManager>();
 		motorScript = GetComponent<PlatformerMotor2D> ();
 	
 	}
@@ -52,9 +56,10 @@ public class PlayerManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
+		if(worldManagerScript.ShiftValidtyCheck() && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))){
 			print("Times Pressed:");
 			duaeState = ChangePlayerState (duaeState);
+
 		}
 
 		if(duaeState == PlayerState.Cloaked){
@@ -79,7 +84,53 @@ public class PlayerManager : MonoBehaviour {
 			Background.GetComponent<SpriteRenderer>().color = lightWorld;
 		}
 
-		if(duaeState == PlayerState.Uncloaked ){
+		if(duaeState == PlayerState.Uncloaked_Form1 ){
+			motorScript.staticEnvLayerMask = (1 << LayerMask.NameToLayer("StaticEnvironment") | 1 << LayerMask.NameToLayer("DarkWorldEnvironment"));
+			motorScript.dynamicEnvLayerMask = 1 << LayerMask.NameToLayer("DynamicEnvironment");
+			motorScript.groundSpeed = uncloakedGroundSpeed;
+			motorScript.timeToGroundSpeed = uncloakedTimeToGroundSpeed;
+			motorScript.groundStopDistance = uncloakedGroundStopDistance;
+			motorScript.airSpeed = uncloakedAirSpeed;
+			motorScript.airStopDistance = uncloakedAirStopDistance;
+			motorScript.fallSpeed = uncloakedFallSpeed;
+			motorScript.gravityMultiplier = uncloakedGravityMultiplier;
+			motorScript.jumpHeight = uncloakedJumpHeight;
+			motorScript.extraJumpHeight = uncloakedExtraJumpHeight;
+			motorScript.numOfAirJumps = uncloakedNumOfAirJumps;
+			motorScript.enableDestruction = true;
+			motorScript.enableObjectPushing = true;
+			motorScript.enableWallSticks = true;
+			motorScript.enableWallJumps = true;
+			motorScript.enableWallSlides = true;
+			motorScript.enableCornerGrabs = true;
+			motorScript.minDistanceToGroundSlam = groundSmashDist;
+			Background.GetComponent<SpriteRenderer>().color = darkWorld;
+		}
+
+		if(duaeState == PlayerState.Uncloaked_Form2 ){
+			motorScript.staticEnvLayerMask = (1 << LayerMask.NameToLayer("StaticEnvironment") | 1 << LayerMask.NameToLayer("DarkWorldEnvironment"));
+			motorScript.dynamicEnvLayerMask = 1 << LayerMask.NameToLayer("DynamicEnvironment");
+			motorScript.groundSpeed = uncloakedGroundSpeed;
+			motorScript.timeToGroundSpeed = uncloakedTimeToGroundSpeed;
+			motorScript.groundStopDistance = uncloakedGroundStopDistance;
+			motorScript.airSpeed = uncloakedAirSpeed;
+			motorScript.airStopDistance = uncloakedAirStopDistance;
+			motorScript.fallSpeed = uncloakedFallSpeed;
+			motorScript.gravityMultiplier = uncloakedGravityMultiplier;
+			motorScript.jumpHeight = uncloakedJumpHeight;
+			motorScript.extraJumpHeight = uncloakedExtraJumpHeight;
+			motorScript.numOfAirJumps = uncloakedNumOfAirJumps;
+			motorScript.enableDestruction = true;
+			motorScript.enableObjectPushing = true;
+			motorScript.enableWallSticks = true;
+			motorScript.enableWallJumps = true;
+			motorScript.enableWallSlides = true;
+			motorScript.enableCornerGrabs = true;
+			motorScript.minDistanceToGroundSlam = groundSmashDist;
+			Background.GetComponent<SpriteRenderer>().color = darkWorld;
+		}
+
+		if(duaeState == PlayerState.Uncloaked_Form3 ){
 			motorScript.staticEnvLayerMask = (1 << LayerMask.NameToLayer("StaticEnvironment") | 1 << LayerMask.NameToLayer("DarkWorldEnvironment"));
 			motorScript.dynamicEnvLayerMask = 1 << LayerMask.NameToLayer("DynamicEnvironment");
 			motorScript.groundSpeed = uncloakedGroundSpeed;
@@ -105,9 +156,21 @@ public class PlayerManager : MonoBehaviour {
 
 	PlayerState ChangePlayerState(PlayerState currentState){
 		print ("CurState" + currentState);
-	if (currentState == PlayerState.Cloaked)
-		currentState = PlayerState.Uncloaked;
-	else if (currentState == PlayerState.Uncloaked)
+		if (currentState == PlayerState.Cloaked){
+			//Dont actually know level values fix this when levels are organized in editor
+			if(worldManagerScript.levelsCompletedList.Contains(3)){
+				currentState = PlayerState.Uncloaked_Form3;
+			}
+			else if(worldManagerScript.levelsCompletedList.Contains(2)){
+				currentState = PlayerState.Uncloaked_Form2;			
+				}
+			else /*if(worldManagerScript.levelsCompletedList.Contains(1))*/{
+					currentState = PlayerState.Uncloaked_Form1;
+				}
+		}
+		else if (currentState == PlayerState.Uncloaked_Form1 || 
+			currentState == PlayerState.Uncloaked_Form2 || 
+			currentState == PlayerState.Uncloaked_Form3 )
 		currentState = PlayerState.Cloaked;
 
 	return currentState;
