@@ -39,7 +39,8 @@ public class PlayerManager : MonoBehaviour {
 		Cloaked,
 		Uncloaked_Form1,
 		Uncloaked_Form2,
-		Uncloaked_Form3
+		Uncloaked_Form3,
+        Monster
 	}
 
 	public PlayerState duaeState;
@@ -50,17 +51,21 @@ public class PlayerManager : MonoBehaviour {
 		duaeState = PlayerState.Cloaked;
 		worldManagerScript = FindObjectOfType<WorldManager>();
 		motorScript = GetComponent<PlatformerMotor2D> ();
-	
-	}
+
+
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
-		if(worldManagerScript.ShiftValidtyCheck() && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))){
-			print("Times Pressed:");
-			duaeState = ChangePlayerState (duaeState);
+        if (worldManagerScript.ShiftValidtyCheck() && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
+            {
+                print("Times Pressed:");
+                duaeState = ChangePlayerState(duaeState);
+            }
 
-		}
+		
 
 		if(duaeState == PlayerState.Cloaked){
 			motorScript.staticEnvLayerMask = ((1 << LayerMask.NameToLayer("StaticEnvironment")) | (1 << LayerMask.NameToLayer("LightWorldEnvironment")));
@@ -97,13 +102,13 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.jumpHeight = uncloakedJumpHeight;
 			motorScript.extraJumpHeight = uncloakedExtraJumpHeight;
 			motorScript.numOfAirJumps = uncloakedNumOfAirJumps;
-			motorScript.enableDestruction = true;
+			motorScript.enableDestruction = false;
 			motorScript.enableObjectPushing = true;
 			motorScript.enableWallSticks = true;
 			motorScript.enableWallJumps = true;
 			motorScript.enableWallSlides = true;
 			motorScript.enableCornerGrabs = true;
-			motorScript.minDistanceToGroundSlam = groundSmashDist;
+			motorScript.minDistanceToGroundSlam = 10000000000000;
 			Background.GetComponent<SpriteRenderer>().color = darkWorld;
 		}
 
@@ -126,7 +131,7 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.enableWallJumps = true;
 			motorScript.enableWallSlides = true;
 			motorScript.enableCornerGrabs = true;
-			motorScript.minDistanceToGroundSlam = groundSmashDist;
+			motorScript.minDistanceToGroundSlam = 1000000000000000;
 			Background.GetComponent<SpriteRenderer>().color = darkWorld;
 		}
 
@@ -152,19 +157,47 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.minDistanceToGroundSlam = groundSmashDist;
 			Background.GetComponent<SpriteRenderer>().color = darkWorld;
 		}
-	}
+
+        if (duaeState == PlayerState.Monster)
+        {
+            motorScript.staticEnvLayerMask = (1 << LayerMask.NameToLayer("StaticEnvironment") | 1 << LayerMask.NameToLayer("DarkWorldEnvironment"));
+            motorScript.dynamicEnvLayerMask = 1 << LayerMask.NameToLayer("DynamicEnvironment");
+            motorScript.groundSpeed = uncloakedGroundSpeed;
+            motorScript.timeToGroundSpeed = uncloakedTimeToGroundSpeed;
+            motorScript.groundStopDistance = uncloakedGroundStopDistance;
+            motorScript.airSpeed = uncloakedAirSpeed;
+            motorScript.airStopDistance = uncloakedAirStopDistance;
+            motorScript.fallSpeed = uncloakedFallSpeed;
+            motorScript.gravityMultiplier = uncloakedGravityMultiplier;
+            motorScript.jumpHeight = uncloakedJumpHeight;
+            motorScript.extraJumpHeight = uncloakedExtraJumpHeight;
+            motorScript.numOfAirJumps = uncloakedNumOfAirJumps;
+            motorScript.enableDestruction = true;
+            motorScript.enableObjectPushing = true;
+            motorScript.enableWallSticks = false;
+            motorScript.enableWallJumps = false;
+            motorScript.enableWallSlides = false;
+            motorScript.enableCornerGrabs = false;
+            motorScript.minDistanceToGroundSlam = 1000000000000000;
+            Background.GetComponent<SpriteRenderer>().color = darkWorld;
+        }
+    }
 
 	PlayerState ChangePlayerState(PlayerState currentState){
 		print ("CurState" + currentState);
 		if (currentState == PlayerState.Cloaked){
-			//Dont actually know level values fix this when levels are organized in editor
-			if(worldManagerScript.levelsCompletedList.Contains(3)){
+            //Dont actually know level values fix this when levels are organized in editor
+            if (worldManagerScript.levelsCompletedList.Contains(4))
+            {
+                currentState = PlayerState.Monster;
+            }
+            else if (worldManagerScript.levelsCompletedList.Contains(3)){
 				currentState = PlayerState.Uncloaked_Form3;
 			}
 			else if(worldManagerScript.levelsCompletedList.Contains(2)){
 				currentState = PlayerState.Uncloaked_Form2;			
 				}
-			else /*if(worldManagerScript.levelsCompletedList.Contains(1))*/{
+			else if(worldManagerScript.levelsCompletedList.Contains(1)){
 					currentState = PlayerState.Uncloaked_Form1;
 				}
 		}

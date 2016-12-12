@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: d313ff64894f643e48d1adea0621890d
-timeCreated: 1480627146
+timeCreated: 1481431540
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: DUAE_Jump_spritesheet_0
+    21300002: DUAE_Jump_spritesheet_1
+    21300004: DUAE_Jump_spritesheet_2
+    21300006: DUAE_Jump_spritesheet_3
+    21300008: DUAE_Jump_spritesheet_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -46,12 +51,152 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    serializedVersion: 2
-    sprites: []
+    sprites:
+    - name: DUAE_Jump_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38, y: -137}
+        - {x: 38, y: 164}
+        - {x: 21, y: 170}
+        - {x: -42, y: 170}
+        - {x: -42, y: -185}
+        - {x: 0, y: -186}
+        - {x: 20, y: -186}
+        - {x: 22, y: -184}
+        - {x: 22, y: -176}
+        - {x: 37, y: -158}
+    - name: DUAE_Jump_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 125, y: -38}
+        - {x: 93, y: 15}
+        - {x: 47, y: 70}
+        - {x: 31, y: 93}
+        - {x: 15, y: 110}
+        - {x: -12, y: 110}
+        - {x: -22, y: 109}
+        - {x: -44, y: 85}
+        - {x: -103, y: -2}
+        - {x: -128, y: -25}
+        - {x: -128, y: -76}
+        - {x: -117, y: -115}
+        - {x: -38, y: -153}
+        - {x: 0, y: -186}
+        - {x: 37, y: -186}
+        - {x: 100, y: -150}
+        - {x: 126, y: -95}
+        - {x: 126, y: -52}
+    - name: DUAE_Jump_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 98, y: 18}
+        - {x: 54, y: 111}
+        - {x: 54, y: 154}
+        - {x: 20, y: 194}
+        - {x: -16, y: 194}
+        - {x: -26, y: 190}
+        - {x: -31, y: 165}
+        - {x: -60, y: 81}
+        - {x: -100, y: 23}
+        - {x: -102, y: 7}
+        - {x: -102, y: -62}
+        - {x: -89, y: -83}
+        - {x: -54, y: -100}
+        - {x: -30, y: -143}
+        - {x: 5, y: -178}
+        - {x: 22, y: -178}
+        - {x: 24, y: -177}
+        - {x: 73, y: -133}
+        - {x: 98, y: -49}
+    - name: DUAE_Jump_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 48, y: -137}
+        - {x: 46, y: -125}
+        - {x: 79, y: -115}
+        - {x: 118, y: -78}
+        - {x: 118, y: -25}
+        - {x: 115, y: 7}
+        - {x: 73, y: 165}
+        - {x: 56, y: 170}
+        - {x: 7, y: 170}
+        - {x: 0, y: 157}
+        - {x: -116, y: 93}
+        - {x: -128, y: 66}
+        - {x: -128, y: 9}
+        - {x: -120, y: -26}
+        - {x: -12, y: -145}
+        - {x: 0, y: -150}
+        - {x: 16, y: -150}
+        - {x: 18, y: -148}
+        - {x: 19, y: -139}
+        - {x: 35, y: -140}
+    - name: DUAE_Jump_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 125, y: -73}
+        - {x: 128, y: -56}
+        - {x: 128, y: -19}
+        - {x: 101, y: 27}
+        - {x: 83, y: 141}
+        - {x: 56, y: 166}
+        - {x: 11, y: 166}
+        - {x: 5, y: 165}
+        - {x: 0, y: 153}
+        - {x: -7, y: 121}
+        - {x: -88, y: 79}
+        - {x: -121, y: 34}
+        - {x: -128, y: 18}
+        - {x: -128, y: -46}
+        - {x: -20, y: -117}
+        - {x: -4, y: -154}
+        - {x: 17, y: -154}
+        - {x: 18, y: -152}
+        - {x: 29, y: -154}
+        - {x: 37, y: -154}
     outline: []
   spritePackingTag: 
   userData: 

@@ -1,14 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-<<<<<<< HEAD
 
-public class Death : MonoBehaviour {
 
-	void OnTriggerEnter2D (Collider2D collider) {
-		if (collider.gameObject.tag == "DeathZone"){
-			Debug.Log ("You're Dead, Love " + collider.gameObject.name);
-		}
-=======
+
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
@@ -138,6 +132,6 @@ public class Death : MonoBehaviour {
 		}
 
 		print (objectDict.Count);
->>>>>>> origin/Joel_Laptop
+
 	}
 }

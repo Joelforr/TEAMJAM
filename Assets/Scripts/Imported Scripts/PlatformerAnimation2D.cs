@@ -10,20 +10,25 @@ namespace PC2D
 
     public class PlatformerAnimation2D : MonoBehaviour
     {
-        public float jumpRotationSpeed;
         public GameObject visualChild;
 
         private PlatformerMotor2D _motor;
+        private PlayerManager _PlayerManager;
         private Animator _animator;
         private bool _isJumping;
         private bool _currentFacingLeft;
+
+        private SpriteRenderer _sprite;
 
         // Use this for initialization
         void Start()
         {
             _motor = GetComponent<PlatformerMotor2D>();
+            _PlayerManager = GetComponent<PlayerManager>();
             _animator = visualChild.GetComponent<Animator>();
-            _animator.Play("Idle");
+            _sprite = visualChild.GetComponent<SpriteRenderer>();
+            _animator.Play("DuaeIdle");
+            
 
             _motor.onJump += SetCurrentFacingLeft;
         }
@@ -31,14 +36,28 @@ namespace PC2D
         // Update is called once per frame
         void Update()
         {
-            if (_motor.motorState == PlatformerMotor2D.MotorState.Jumping ||
-                _isJumping &&
-                    (_motor.motorState == PlatformerMotor2D.MotorState.Falling ||
-                                 _motor.motorState == PlatformerMotor2D.MotorState.FallingFast))
+            if (_motor.motorState == PlatformerMotor2D.MotorState.Jumping )
             {
-                _isJumping = true;
-                _animator.Play("Jump");
-
+                if (_PlayerManager.duaeState == PlayerManager.PlayerState.Monster)
+                {
+                    _animator.Play("MONSTER_JUMP");
+                    if (UnityEngine.Input.GetKeyDown("space") && _motor.numOfAirJumps > 0)
+                    {
+                        //don't ask it works
+                        _animator.Play("MONSTER_FALL");
+                        _animator.Play("MONSTER_JUMP");
+                    }
+                }
+                else {
+                    _animator.Play("DUAE_JUMP");
+                    _sprite.flipX = false;
+                    if (UnityEngine.Input.GetKeyDown("space") && _motor.numOfAirJumps > 0)
+                    {
+                        //don't ask it works
+                        _animator.Play("DUAE_FALL");
+                        _animator.Play("DUAE_JUMP");
+                    }
+                }
                 if (_motor.velocity.x <= -0.1f)
                 {
                     _currentFacingLeft = true;
@@ -48,8 +67,8 @@ namespace PC2D
                     _currentFacingLeft = false;
                 }
 
-                Vector3 rotateDir = _currentFacingLeft ? Vector3.forward : Vector3.back;
-                visualChild.transform.Rotate(rotateDir, jumpRotationSpeed * Time.deltaTime);
+               // Vector3 rotateDir = _currentFacingLeft ? Vector3.forward : Vector3.back;
+                
             }
             else
             {
@@ -57,14 +76,30 @@ namespace PC2D
                 visualChild.transform.rotation = Quaternion.identity;
 
                 if (_motor.motorState == PlatformerMotor2D.MotorState.Falling ||
-                                 _motor.motorState == PlatformerMotor2D.MotorState.FallingFast)
+                                 _motor.motorState == PlatformerMotor2D.MotorState.FallingFast ||
+                                 _motor.velocity.y < 0)
                 {
-                    _animator.Play("Fall");
+                    if (_PlayerManager.duaeState == PlayerManager.PlayerState.Monster )
+                    {
+                        _animator.Play("MONSTER_FALL");
+                    }
+                    else if (_PlayerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form3 &&
+                        _motor.velocity.y == -_motor.fallSpeed)
+                    {
+                        _animator.Play("DUAE_GSLAM");
+                    }
+                    else {
+                        _animator.Play("DUAE_FALL");
+                    }
+                    _sprite.flipX = false;
                 }
-                else if (_motor.motorState == PlatformerMotor2D.MotorState.WallSliding ||
-                         _motor.motorState == PlatformerMotor2D.MotorState.WallSticking)
+                else if (_PlayerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form1 &&
+                    (_motor.motorState == PlatformerMotor2D.MotorState.WallSliding ||
+                         _motor.motorState == PlatformerMotor2D.MotorState.WallSticking))
                 {
-                    _animator.Play("Cling");
+                    _animator.Play("DUAE_WALLCLING");
+                    _sprite.flipX = true;
+
                 }
                 else if (_motor.motorState == PlatformerMotor2D.MotorState.OnCorner)
                 {
@@ -77,16 +112,46 @@ namespace PC2D
                 else if (_motor.motorState == PlatformerMotor2D.MotorState.Dashing)
                 {
                     _animator.Play("Dash");
+                    
                 }
                 else
                 {
                     if (_motor.velocity.sqrMagnitude >= 0.1f * 0.1f)
                     {
-                        _animator.Play("Walk");
+                        if(_PlayerManager.duaeState == PlayerManager.PlayerState.Monster)
+                        {
+                            _animator.Play("MONSTER_WALK");
+                        }
+                        else if (_PlayerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form2 ||
+                           _PlayerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form3)
+                        {
+                            if (_motor.velocity.x == _motor.groundSpeed || _motor.velocity.x == -_motor.groundSpeed)
+                            {
+                                _animator.Play("DUAE_CHARGE");
+                            }
+                            else
+                            {
+                                
+                                _animator.Play("Hybrid_WALK");
+                            }
+                        }
+                        else
+                        {
+                            _animator.Play("DUAE_WALK");
+                        }
+                        
+                        _sprite.flipX = false;
                     }
                     else
                     {
-                        _animator.Play("Idle");
+                        if (_PlayerManager.duaeState == PlayerManager.PlayerState.Monster)
+                        {
+                            _animator.Play("MONSTER_IDLE");
+                        }
+                        else {
+                            _animator.Play("DuaeIdle");
+                        }
+                        _sprite.flipX = false;
                     }
                 }
             }

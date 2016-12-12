@@ -1,9 +1,16 @@
 fileFormatVersion: 2
 guid: 3835dadb6a6c746e79c6c31871407b19
-timeCreated: 1480627149
+timeCreated: 1481436405
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: MONSTER_idle_spritesheet_0
+    21300002: MONSTER_idle_spritesheet_1
+    21300004: MONSTER_idle_spritesheet_2
+    21300006: MONSTER_idle_spritesheet_3
+    21300008: MONSTER_idle_spritesheet_4
+    21300010: MONSTER_idle_spritesheet_5
+    21300012: MONSTER_idle_spritesheet_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -46,12 +53,276 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    serializedVersion: 2
-    sprites: []
+    sprites:
+    - name: MONSTER_idle_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 76, y: 170}
+        - {x: -63, y: 170}
+        - {x: -95, y: 96}
+        - {x: -95, y: -43}
+        - {x: -92, y: -128}
+        - {x: -61, y: -145}
+        - {x: -47, y: -142}
+        - {x: -48, y: -137}
+        - {x: -55, y: -95}
+        - {x: -58, y: -46}
+        - {x: -52, y: -31}
+        - {x: -49, y: -25}
+        - {x: -45, y: -19}
+        - {x: -50, y: -27}
+        - {x: -53, y: -32}
+        - {x: -56, y: -50}
+        - {x: -56, y: -75}
+        - {x: -53, y: -93}
+        - {x: -46, y: -99}
+        - {x: -29, y: -149}
+        - {x: -72, y: -160}
+        - {x: -77, y: -171}
+        - {x: -66, y: -176}
+        - {x: 149, y: -176}
+        - {x: 173, y: -170}
+        - {x: 173, y: -34}
+        - {x: 122, y: 153}
+    - name: MONSTER_idle_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 126, y: -151}
+        - {x: 153, y: -176}
+        - {x: 173, y: -176}
+        - {x: 173, y: 69}
+        - {x: 76, y: 173}
+        - {x: -27, y: 173}
+        - {x: -95, y: 103}
+        - {x: -95, y: -68}
+        - {x: -94, y: -128}
+        - {x: -61, y: -146}
+        - {x: -46, y: -143}
+        - {x: -59, y: -58}
+        - {x: -58, y: -46}
+        - {x: -52, y: -31}
+        - {x: -49, y: -25}
+        - {x: -45, y: -19}
+        - {x: -50, y: -27}
+        - {x: -53, y: -32}
+        - {x: -56, y: -50}
+        - {x: -56, y: -75}
+        - {x: -53, y: -93}
+        - {x: -46, y: -99}
+        - {x: -29, y: -149}
+        - {x: -72, y: -160}
+        - {x: -77, y: -171}
+        - {x: -66, y: -176}
+        - {x: 111, y: -176}
+        - {x: 101, y: -88}
+        - {x: 93, y: -28}
+    - name: MONSTER_idle_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -81, y: 170}
+        - {x: -95, y: 164}
+        - {x: -95, y: -120}
+        - {x: -93, y: -128}
+        - {x: -76, y: -139}
+        - {x: -50, y: -142}
+        - {x: -47, y: -134}
+        - {x: -53, y: -130}
+        - {x: -52, y: -95}
+        - {x: -65, y: -84}
+        - {x: -59, y: -58}
+        - {x: -58, y: -46}
+        - {x: -52, y: -31}
+        - {x: -49, y: -25}
+        - {x: -45, y: -19}
+        - {x: -50, y: -27}
+        - {x: -53, y: -32}
+        - {x: -56, y: -50}
+        - {x: -56, y: -75}
+        - {x: -53, y: -93}
+        - {x: -46, y: -99}
+        - {x: -47, y: -140}
+        - {x: -91, y: -176}
+        - {x: 173, y: -176}
+        - {x: 173, y: 65}
+        - {x: 123, y: 170}
+    - name: MONSTER_idle_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 173, y: -6}
+        - {x: 73, y: 167}
+        - {x: -38, y: 167}
+        - {x: -95, y: 108}
+        - {x: -95, y: -43}
+        - {x: -92, y: -128}
+        - {x: -61, y: -145}
+        - {x: -47, y: -142}
+        - {x: -48, y: -137}
+        - {x: -55, y: -95}
+        - {x: -58, y: -46}
+        - {x: -52, y: -31}
+        - {x: -49, y: -25}
+        - {x: -45, y: -19}
+        - {x: -50, y: -27}
+        - {x: -53, y: -32}
+        - {x: -56, y: -50}
+        - {x: -56, y: -75}
+        - {x: -53, y: -93}
+        - {x: -46, y: -99}
+        - {x: -29, y: -149}
+        - {x: -72, y: -160}
+        - {x: -77, y: -171}
+        - {x: -66, y: -176}
+        - {x: 160, y: -176}
+        - {x: 165, y: -175}
+        - {x: 173, y: -149}
+    - name: MONSTER_idle_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 109, y: 86}
+        - {x: 95, y: 170}
+        - {x: -73, y: 170}
+        - {x: -95, y: 161}
+        - {x: -95, y: -125}
+        - {x: -94, y: -128}
+        - {x: -61, y: -146}
+        - {x: -46, y: -143}
+        - {x: -59, y: -58}
+        - {x: -58, y: -46}
+        - {x: -52, y: -31}
+        - {x: -49, y: -25}
+        - {x: -45, y: -19}
+        - {x: -50, y: -27}
+        - {x: -53, y: -32}
+        - {x: -56, y: -50}
+        - {x: -56, y: -75}
+        - {x: -53, y: -93}
+        - {x: -46, y: -99}
+        - {x: -29, y: -149}
+        - {x: -72, y: -160}
+        - {x: -95, y: -172}
+        - {x: -95, y: -176}
+        - {x: 172, y: -176}
+        - {x: 173, y: -174}
+        - {x: 173, y: -74}
+        - {x: 152, y: 18}
+    - name: MONSTER_idle_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 109, y: 86}
+        - {x: 96, y: 173}
+        - {x: -73, y: 173}
+        - {x: -95, y: 163}
+        - {x: -95, y: -126}
+        - {x: -94, y: -128}
+        - {x: -61, y: -146}
+        - {x: -46, y: -143}
+        - {x: -59, y: -58}
+        - {x: -58, y: -46}
+        - {x: -52, y: -31}
+        - {x: -49, y: -25}
+        - {x: -45, y: -19}
+        - {x: -50, y: -27}
+        - {x: -53, y: -32}
+        - {x: -56, y: -50}
+        - {x: -56, y: -75}
+        - {x: -53, y: -93}
+        - {x: -46, y: -99}
+        - {x: -29, y: -149}
+        - {x: -72, y: -160}
+        - {x: -95, y: -172}
+        - {x: -95, y: -176}
+        - {x: 172, y: -176}
+        - {x: 173, y: -174}
+        - {x: 173, y: -74}
+        - {x: 152, y: 18}
+    - name: MONSTER_idle_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -81, y: 170}
+        - {x: -95, y: 164}
+        - {x: -95, y: -120}
+        - {x: -93, y: -128}
+        - {x: -76, y: -139}
+        - {x: -50, y: -142}
+        - {x: -47, y: -134}
+        - {x: -53, y: -130}
+        - {x: -52, y: -95}
+        - {x: -65, y: -84}
+        - {x: -59, y: -58}
+        - {x: -58, y: -46}
+        - {x: -52, y: -31}
+        - {x: -49, y: -25}
+        - {x: -45, y: -19}
+        - {x: -50, y: -27}
+        - {x: -53, y: -32}
+        - {x: -56, y: -50}
+        - {x: -56, y: -75}
+        - {x: -53, y: -93}
+        - {x: -46, y: -99}
+        - {x: -47, y: -140}
+        - {x: -91, y: -176}
+        - {x: 173, y: -176}
+        - {x: 173, y: 65}
+        - {x: 123, y: 170}
     outline: []
   spritePackingTag: 
   userData: 
