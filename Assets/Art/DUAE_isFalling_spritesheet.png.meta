@@ -1,0 +1,233 @@
+fileFormatVersion: 2
+guid: 1689a116e8cdc46b4a4641bad3d20f9e
+timeCreated: 1481431523
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DUAE_isFalling_spritesheet_0
+    21300002: DUAE_isFalling_spritesheet_1
+    21300004: DUAE_isFalling_spritesheet_2
+    21300006: DUAE_isFalling_spritesheet_3
+    21300008: DUAE_isFalling_spritesheet_4
+    21300010: DUAE_isFalling_spritesheet_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: DUAE_isFalling_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 114, y: -57}
+        - {x: 59, y: 58}
+        - {x: 60, y: 106}
+        - {x: 44, y: 134}
+        - {x: -8, y: 134}
+        - {x: -28, y: 129}
+        - {x: -94, y: 20}
+        - {x: -94, y: -54}
+        - {x: -87, y: -83}
+        - {x: -71, y: -102}
+        - {x: -55, y: -117}
+        - {x: -13, y: -142}
+        - {x: 0, y: -182}
+        - {x: 23, y: -182}
+        - {x: 24, y: -181}
+        - {x: 23, y: -171}
+        - {x: 50, y: -173}
+        - {x: 114, y: -98}
+    - name: DUAE_isFalling_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118, y: -13}
+        - {x: 52, y: 62}
+        - {x: 58, y: 105}
+        - {x: 48, y: 121}
+        - {x: 36, y: 134}
+        - {x: -4, y: 134}
+        - {x: -11, y: 133}
+        - {x: -61, y: 62}
+        - {x: -90, y: -20}
+        - {x: -90, y: -75}
+        - {x: -70, y: -127}
+        - {x: -25, y: -150}
+        - {x: 3, y: -182}
+        - {x: 21, y: -182}
+        - {x: 24, y: -181}
+        - {x: 52, y: -176}
+        - {x: 110, y: -87}
+        - {x: 118, y: -54}
+    - name: DUAE_isFalling_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118, y: -26}
+        - {x: 116, y: -16}
+        - {x: 76, y: 38}
+        - {x: 53, y: 59}
+        - {x: 59, y: 106}
+        - {x: 39, y: 134}
+        - {x: -5, y: 134}
+        - {x: -11, y: 133}
+        - {x: -53, y: 60}
+        - {x: -82, y: -11}
+        - {x: -82, y: -135}
+        - {x: 1, y: -182}
+        - {x: 39, y: -182}
+        - {x: 56, y: -172}
+        - {x: 79, y: -121}
+        - {x: 118, y: -61}
+    - name: DUAE_isFalling_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 114, y: -57}
+        - {x: 59, y: 58}
+        - {x: 60, y: 106}
+        - {x: 44, y: 134}
+        - {x: -8, y: 134}
+        - {x: -28, y: 129}
+        - {x: -94, y: 20}
+        - {x: -94, y: -54}
+        - {x: -87, y: -83}
+        - {x: -71, y: -102}
+        - {x: -55, y: -117}
+        - {x: -13, y: -142}
+        - {x: 0, y: -182}
+        - {x: 23, y: -182}
+        - {x: 24, y: -181}
+        - {x: 23, y: -171}
+        - {x: 50, y: -173}
+        - {x: 114, y: -98}
+    - name: DUAE_isFalling_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118, y: -55}
+        - {x: 118, y: 0}
+        - {x: 56, y: 63}
+        - {x: 61, y: 106}
+        - {x: 37, y: 134}
+        - {x: -5, y: 134}
+        - {x: -11, y: 133}
+        - {x: -61, y: 62}
+        - {x: -90, y: -20}
+        - {x: -90, y: -75}
+        - {x: -70, y: -127}
+        - {x: -25, y: -150}
+        - {x: 3, y: -182}
+        - {x: 21, y: -182}
+        - {x: 24, y: -181}
+        - {x: 23, y: -171}
+        - {x: 50, y: -173}
+        - {x: 101, y: -112}
+    - name: DUAE_isFalling_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118, y: -26}
+        - {x: 116, y: -16}
+        - {x: 76, y: 38}
+        - {x: 53, y: 59}
+        - {x: 59, y: 106}
+        - {x: 39, y: 134}
+        - {x: -5, y: 134}
+        - {x: -11, y: 133}
+        - {x: -53, y: 60}
+        - {x: -82, y: -11}
+        - {x: -82, y: -135}
+        - {x: 1, y: -182}
+        - {x: 39, y: -182}
+        - {x: 56, y: -172}
+        - {x: 79, y: -121}
+        - {x: 118, y: -61}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

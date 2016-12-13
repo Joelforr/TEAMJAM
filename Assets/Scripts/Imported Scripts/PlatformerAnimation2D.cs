@@ -10,20 +10,25 @@ namespace PC2D
 
     public class PlatformerAnimation2D : MonoBehaviour
     {
-        public float jumpRotationSpeed;
         public GameObject visualChild;
 
         private PlatformerMotor2D _motor;
+        private PlayerManager _playerManager;
         private Animator _animator;
         private bool _isJumping;
         private bool _currentFacingLeft;
+
+        private SpriteRenderer _sprite;
 
         // Use this for initialization
         void Start()
         {
             _motor = GetComponent<PlatformerMotor2D>();
+            _playerManager = GetComponent<PlayerManager>();
             _animator = visualChild.GetComponent<Animator>();
-            _animator.Play("Idle");
+            _sprite = visualChild.GetComponent<SpriteRenderer>();
+            _animator.Play("DuaeIdle");
+            
 
             _motor.onJump += SetCurrentFacingLeft;
         }
@@ -31,13 +36,19 @@ namespace PC2D
         // Update is called once per frame
         void Update()
         {
-            if (_motor.motorState == PlatformerMotor2D.MotorState.Jumping ||
-                _isJumping &&
-                    (_motor.motorState == PlatformerMotor2D.MotorState.Falling ||
-                                 _motor.motorState == PlatformerMotor2D.MotorState.FallingFast))
+            if (_motor.motorState == PlatformerMotor2D.MotorState.Jumping )
             {
-                _isJumping = true;
-                _animator.Play("Jump");
+                if (_playerManager.duaeState == PlayerManager.PlayerState.Monster)
+                {
+					_isJumping = true;
+                    _animator.Play("MONSTER_JUMP");
+                }
+                else {
+					_isJumping = true;
+                    _animator.Play("DUAE_JUMP");
+                }
+
+
 
                 if (_motor.velocity.x <= -0.1f)
                 {
@@ -48,8 +59,8 @@ namespace PC2D
                     _currentFacingLeft = false;
                 }
 
-                Vector3 rotateDir = _currentFacingLeft ? Vector3.forward : Vector3.back;
-                visualChild.transform.Rotate(rotateDir, jumpRotationSpeed * Time.deltaTime);
+               // Vector3 rotateDir = _currentFacingLeft ? Vector3.forward : Vector3.back;
+                
             }
             else
             {
@@ -57,18 +68,36 @@ namespace PC2D
                 visualChild.transform.rotation = Quaternion.identity;
 
                 if (_motor.motorState == PlatformerMotor2D.MotorState.Falling ||
-                                 _motor.motorState == PlatformerMotor2D.MotorState.FallingFast)
+                                 _motor.motorState == PlatformerMotor2D.MotorState.FallingFast || 
+				   							_motor.motorState == PlatformerMotor2D.MotorState.HeavyFalling)
                 {
-                    _animator.Play("Fall");
+                    if (_playerManager.duaeState == PlayerManager.PlayerState.Monster )
+                    {
+                        _animator.Play("MONSTER_FALL");
+                    }
+                    else if (_playerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form3 &&
+						_motor.motorState == PlatformerMotor2D.MotorState.HeavyFalling)
+                    {
+                        _animator.Play("DUAE_GSLAM");
+                    }
+                    else {
+                        _animator.Play("DUAE_FALL");
+                    }
+                    //_sprite.flipX = false;
                 }
-                else if (_motor.motorState == PlatformerMotor2D.MotorState.WallSliding ||
-                         _motor.motorState == PlatformerMotor2D.MotorState.WallSticking)
+                else if ((_playerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form1 ||
+					_playerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form2 || 
+					_playerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form3) &&
+                    (_motor.motorState == PlatformerMotor2D.MotorState.WallSliding ||
+                     _motor.motorState == PlatformerMotor2D.MotorState.WallSticking))
                 {
-                    _animator.Play("Cling");
+                    _animator.Play("DUAE_WALLCLING");
+                    //_sprite.flipX = true;
+
                 }
                 else if (_motor.motorState == PlatformerMotor2D.MotorState.OnCorner)
                 {
-                    _animator.Play("On Corner");
+					_animator.Play("DUAE_WALLCLING");
                 }
                 else if (_motor.motorState == PlatformerMotor2D.MotorState.Slipping)
                 {
@@ -77,16 +106,48 @@ namespace PC2D
                 else if (_motor.motorState == PlatformerMotor2D.MotorState.Dashing)
                 {
                     _animator.Play("Dash");
+                    
                 }
                 else
                 {
                     if (_motor.velocity.sqrMagnitude >= 0.1f * 0.1f)
                     {
-                        _animator.Play("Walk");
+                        if(_playerManager.duaeState == PlayerManager.PlayerState.Monster)
+                        {
+                            _animator.Play("MONSTER_WALK");
+                        }
+                        else if ((_playerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form2 ||
+							_playerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form3) && 
+							(_motor.velocity.x == _playerManager.uncloakedGroundSpeed ||
+								_motor.velocity.x == -_playerManager.uncloakedGroundSpeed))
+                        {
+							_animator.Play("DUAE_CHARGE");
+
+						}                            
+						else if(_playerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form1 ||
+							_playerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form2 || 
+							_playerManager.duaeState == PlayerManager.PlayerState.Uncloaked_Form3)
+						{
+
+							_animator.Play("Hybrid_WALK");
+						}
+                        else
+                        {
+                            _animator.Play("DUAE_WALK");
+                        }
+                        
+                        //_sprite.flipX = false;
                     }
                     else
                     {
-                        _animator.Play("Idle");
+                        if (_playerManager.duaeState == PlayerManager.PlayerState.Monster)
+                        {
+                            _animator.Play("MONSTER_IDLE");
+                        }
+                        else {
+                            _animator.Play("DuaeIdle");
+                        }
+                        //_sprite.flipX = false;
                     }
                 }
             }
@@ -105,7 +166,13 @@ namespace PC2D
             {
                 Vector3 newScale = visualChild.transform.localScale;
                 newScale.x = Mathf.Abs(newScale.x) * ((valueCheck > 0) ? 1.0f : -1.0f);
-                visualChild.transform.localScale = newScale;
+				if(_motor.motorState == PlatformerMotor2D.MotorState.WallSliding ||
+					_motor.motorState == PlatformerMotor2D.MotorState.WallSticking){
+					newScale.x = -newScale.x;
+				}
+					visualChild.transform.localScale = newScale;
+
+                
             }
         }
 

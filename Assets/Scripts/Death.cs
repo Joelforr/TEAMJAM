@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+
+
+
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
@@ -129,5 +132,6 @@ public class Death : MonoBehaviour {
 		}
 
 		print (objectDict.Count);
+
 	}
 }
