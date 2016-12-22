@@ -108,7 +108,7 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.enableWallJumps = true;
 			motorScript.enableWallSlides = true;
 			motorScript.enableCornerGrabs = true;
-			motorScript.minDistanceToGroundSlam = 10000000000000;
+			motorScript.minDistanceToGroundSlam = groundSmashDist;
 			Background.GetComponent<SpriteRenderer>().color = darkWorld;
 		}
 
@@ -197,8 +197,8 @@ public class PlayerManager : MonoBehaviour {
 			else if(worldManagerScript.levelsCompletedList.Contains(2)){
 				currentState = PlayerState.Uncloaked_Form2;			
 				}
-			else if(worldManagerScript.levelsCompletedList.Contains(1)){
-					currentState = PlayerState.Uncloaked_Form1;
+			else /*if(worldManagerScript.levelsCompletedList.Contains(1))*/{
+					currentState = PlayerState.Uncloaked_Form3;
 				}
 		}
 		else if (currentState == PlayerState.Uncloaked_Form1 || 
