@@ -40,15 +40,17 @@ public class Death : MonoBehaviour {
         Pushable = GameObject.Find("Pushable");
         Breakable = GameObject.Find("Destructable");
 
-		UpdateDictionary ();
+		//UpdateDictionary ();
     }
    
     
 
 	void OnTriggerEnter2D (Collider2D collider) {
-		if (collider.gameObject.tag == "DeathZone"){
-            
-            Debug.Log("You're Dead, Love " + collider.gameObject.name);
+        _currScreen = SceneManager.GetActiveScene().name;
+        if (collider.gameObject.tag == "DeathZone") {
+            SceneManager.LoadScene(_currScreen);
+        }
+           /* Debug.Log("You're Dead, Love " + collider.gameObject.name);
 
             // finds and destroys the blocks on each death
             Pushable = GameObject.Find("Pushable");
@@ -111,7 +113,7 @@ public class Death : MonoBehaviour {
            // Debug.Log("check");
            //set checkpoint
             CheckPos = collider.bounds.center;
-        }
+        }*/
 	}
 
 	private void UpdateDictionary(){
