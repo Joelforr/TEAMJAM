@@ -1,23 +1,25 @@
 fileFormatVersion: 2
-guid: c679f69c565d44b6ebdce060e84e0a75
-timeCreated: 1479252452
+guid: 4a9f5c20d196c614180ed8f275dede35
+timeCreated: 1482460093
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: DUAE_Idle_Spritesheet_0
-    21300002: DUAE_Idle_Spritesheet_1
-    21300004: DUAE_Idle_Spritesheet_2
-    21300006: DUAE_Idle_Spritesheet_3
-    21300008: DUAE_Idle_Spritesheet_4
-    21300010: DUAE_Idle_Spritesheet_5
-    21300012: DUAE_Idle_Spritesheet_6
-    21300014: DUAE_Idle_Spritesheet_7
-  serializedVersion: 4
+    21300000: GATE_0
+    21300002: GATE_1
+    21300004: GATE_2
+    21300006: GATE_3
+    21300008: GATE_4
+    21300010: GATE_5
+    21300012: GATE_6
+    21300014: GATE_7
+    21300016: GATE_8
+    21300018: GATE_9
+  serializedVersion: 2
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
-    sRGBTexture: 1
     linearTexture: 0
+    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
@@ -29,8 +31,10 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 6
+  generateCubemap: 0
   cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
@@ -41,151 +45,150 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
-  alphaUsage: 1
+  spritePixelsToUnits: 50
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
-  textureShape: 1
-  maxTextureSizeSet: 0
-  compressionQualitySet: 0
-  textureFormatSet: 0
-  platformSettings:
-  - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Standalone
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
+  buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_0
+      name: GATE_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 1096
-        width: 116
-        height: 352
+        x: 0
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_1
+      name: GATE_1
       rect:
         serializedVersion: 2
-        x: 328
-        y: 1096
-        width: 116
-        height: 352
+        x: 512
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_2
+      name: GATE_2
       rect:
         serializedVersion: 2
-        x: 584
-        y: 1096
-        width: 116
-        height: 348
+        x: 1024
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_3
+      name: GATE_3
       rect:
         serializedVersion: 2
-        x: 72
-        y: 584
-        width: 116
-        height: 348
+        x: 1536
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_4
+      name: GATE_4
       rect:
         serializedVersion: 2
-        x: 328
-        y: 584
-        width: 116
-        height: 352
+        x: 0
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_5
+      name: GATE_5
       rect:
         serializedVersion: 2
-        x: 584
-        y: 584
-        width: 116
-        height: 352
+        x: 512
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_6
+      name: GATE_6
       rect:
         serializedVersion: 2
-        x: 72
-        y: 72
-        width: 116
-        height: 348
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DUAE_Idle_Spritesheet_7
+      name: GATE_7
       rect:
         serializedVersion: 2
-        x: 328
-        y: 72
-        width: 116
-        height: 348
+        x: 1536
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GATE_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GATE_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
