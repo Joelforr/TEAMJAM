@@ -9,12 +9,12 @@ TextureImporter:
     21300004: HYBRID_smash_spritesheet_2
     21300006: HYBRID_smash_spritesheet_3
     21300008: HYBRID_smash_spritesheet_4
-  serializedVersion: 2
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
@@ -26,23 +26,19 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -50,12 +46,36 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: HYBRID_smash_spritesheet_0
+    - serializedVersion: 2
+      name: HYBRID_smash_spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -65,40 +85,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 116, y: 11}
-        - {x: 105, y: 16}
-        - {x: 96, y: 14}
-        - {x: 94, y: 12}
-        - {x: 94, y: 8}
-        - {x: 97, y: 3}
-        - {x: 94, y: -6}
-        - {x: 94, y: 22}
-        - {x: 97, y: 20}
-        - {x: 112, y: 39}
-        - {x: 109, y: 55}
-        - {x: 126, y: 105}
-        - {x: 126, y: 137}
-        - {x: 121, y: 138}
-        - {x: -122, y: 138}
-        - {x: -122, y: 12}
-        - {x: -120, y: 10}
-        - {x: -116, y: 10}
-        - {x: -114, y: 12}
-        - {x: -114, y: 10}
-        - {x: -116, y: 10}
-        - {x: -121, y: 7}
-        - {x: -122, y: 4}
-        - {x: -122, y: -14}
-        - {x: -119, y: -21}
-        - {x: -113, y: -34}
-        - {x: -106, y: -93}
-        - {x: -43, y: -174}
-        - {x: -2, y: -174}
-        - {x: 62, y: -162}
-        - {x: 126, y: -38}
-        - {x: 126, y: -7}
-    - name: HYBRID_smash_spritesheet_1
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: HYBRID_smash_spritesheet_1
       rect:
         serializedVersion: 2
         x: 256
@@ -108,32 +98,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 122, y: -120}
-        - {x: 128, y: -96}
-        - {x: 128, y: 22}
-        - {x: 110, y: 75}
-        - {x: 75, y: 123}
-        - {x: 52, y: 154}
-        - {x: 2, y: 153}
-        - {x: -41, y: 174}
-        - {x: -72, y: 174}
-        - {x: -117, y: 136}
-        - {x: -128, y: 75}
-        - {x: -128, y: -6}
-        - {x: -124, y: -6}
-        - {x: -122, y: -4}
-        - {x: -122, y: -6}
-        - {x: -124, y: -6}
-        - {x: -126, y: -8}
-        - {x: -128, y: -13}
-        - {x: -128, y: -35}
-        - {x: -91, y: -171}
-        - {x: -40, y: -174}
-        - {x: -4, y: -174}
-        - {x: 49, y: -163}
-        - {x: 69, y: -145}
-    - name: HYBRID_smash_spritesheet_2
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: HYBRID_smash_spritesheet_2
       rect:
         serializedVersion: 2
         x: 512
@@ -143,79 +111,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -2, y: 136}
-        - {x: -2, y: 132}
-        - {x: 4, y: 126}
-        - {x: 6, y: 126}
-        - {x: 6, y: 124}
-        - {x: 8, y: 122}
-        - {x: 6, y: 122}
-        - {x: 6, y: 124}
-        - {x: 4, y: 126}
-        - {x: -1, y: 127}
-        - {x: -5, y: 138}
-        - {x: -27, y: 146}
-        - {x: -43, y: 150}
-        - {x: -56, y: 150}
-        - {x: -57, y: 149}
-        - {x: -53, y: 133}
-        - {x: -43, y: 119}
-        - {x: -39, y: 117}
-        - {x: -38, y: 112}
-        - {x: -36, y: 110}
-        - {x: -34, y: 110}
-        - {x: -34, y: 106}
-        - {x: -35, y: 110}
-        - {x: -38, y: 110}
-        - {x: -38, y: 112}
-        - {x: -39, y: 115}
-        - {x: -47, y: 123}
-        - {x: -62, y: 136}
-        - {x: -83, y: 146}
-        - {x: -93, y: 146}
-        - {x: -89, y: 129}
-        - {x: -64, y: 94}
-        - {x: -59, y: 93}
-        - {x: -58, y: 88}
-        - {x: -56, y: 86}
-        - {x: -58, y: 86}
-        - {x: -58, y: 88}
-        - {x: -59, y: 92}
-        - {x: -87, y: 103}
-        - {x: -123, y: 119}
-        - {x: -124, y: 107}
-        - {x: -119, y: 103}
-        - {x: -126, y: 101}
-        - {x: -126, y: 89}
-        - {x: -119, y: 82}
-        - {x: -107, y: 55}
-        - {x: -101, y: 49}
-        - {x: -103, y: 51}
-        - {x: -119, y: 70}
-        - {x: -126, y: 46}
-        - {x: -126, y: -156}
-        - {x: -110, y: -170}
-        - {x: 128, y: -170}
-        - {x: 128, y: 119}
-        - {x: 5, y: 149}
-      - - {x: 20, y: 174}
-        - {x: 2, y: 174}
-        - {x: 2, y: 163}
-        - {x: 4, y: 160}
-        - {x: 61, y: 114}
-        - {x: 68, y: 114}
-        - {x: 70, y: 115}
-        - {x: 70, y: 129}
-        - {x: 48, y: 170}
-      - - {x: -102, y: 186}
-        - {x: -102, y: 159}
-        - {x: -99, y: 143}
-        - {x: -70, y: 134}
-        - {x: -54, y: 134}
-        - {x: -54, y: 152}
-        - {x: -88, y: 186}
-    - name: HYBRID_smash_spritesheet_3
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: HYBRID_smash_spritesheet_3
       rect:
         serializedVersion: 2
         x: 0
@@ -225,61 +124,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -122, y: -138}
-        - {x: -122, y: -166}
-        - {x: -120, y: -176}
-        - {x: -102, y: -194}
-        - {x: -53, y: -194}
-        - {x: -46, y: -192}
-        - {x: -46, y: -178}
-        - {x: -104, y: -138}
-      - - {x: 58, y: 166}
-        - {x: 57, y: 159}
-        - {x: -19, y: 160}
-        - {x: -81, y: 158}
-        - {x: -77, y: 148}
-        - {x: -128, y: 161}
-        - {x: -128, y: 145}
-        - {x: -123, y: 131}
-        - {x: -115, y: 123}
-        - {x: -119, y: 127}
-        - {x: -124, y: 130}
-        - {x: -128, y: 131}
-        - {x: -128, y: -124}
-        - {x: -79, y: -182}
-        - {x: 111, y: -182}
-        - {x: 128, y: -125}
-        - {x: 128, y: 113}
-        - {x: 118, y: 166}
-      - - {x: -54, y: -142}
-        - {x: -54, y: -140}
-        - {x: -56, y: -138}
-        - {x: -58, y: -138}
-        - {x: -58, y: -132}
-        - {x: -60, y: -130}
-        - {x: -58, y: -130}
-        - {x: -58, y: -132}
-        - {x: -56, y: -134}
-        - {x: -54, y: -135}
-        - {x: -54, y: -140}
-        - {x: -52, y: -142}
-        - {x: -47, y: -143}
-        - {x: -12, y: -154}
-        - {x: 2, y: -154}
-        - {x: 14, y: -141}
-        - {x: 14, y: -104}
-        - {x: -93, y: -2}
-        - {x: -126, y: -2}
-        - {x: -126, y: -35}
-        - {x: -112, y: -123}
-        - {x: -86, y: -150}
-        - {x: -73, y: -154}
-        - {x: -48, y: -154}
-        - {x: -45, y: -153}
-        - {x: -46, y: -148}
-        - {x: -52, y: -142}
-    - name: HYBRID_smash_spritesheet_4
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: HYBRID_smash_spritesheet_4
       rect:
         serializedVersion: 2
         x: 256
@@ -289,129 +137,8 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -122, y: -54}
-        - {x: -122, y: -72}
-        - {x: -116, y: -100}
-        - {x: -105, y: -118}
-        - {x: -19, y: -138}
-        - {x: 6, y: -138}
-        - {x: 6, y: -122}
-        - {x: -110, y: -54}
-      - - {x: 35, y: 162}
-        - {x: 32, y: 154}
-        - {x: 27, y: 154}
-        - {x: 12, y: 158}
-        - {x: -25, y: 159}
-        - {x: -28, y: 151}
-        - {x: -49, y: 162}
-        - {x: -108, y: 162}
-        - {x: -108, y: 150}
-        - {x: -64, y: 71}
-        - {x: -40, y: 18}
-        - {x: -33, y: 9}
-        - {x: 1, y: -29}
-        - {x: 9, y: -37}
-        - {x: 13, y: -39}
-        - {x: 14, y: -44}
-        - {x: 16, y: -46}
-        - {x: 14, y: -46}
-        - {x: 14, y: -44}
-        - {x: 13, y: -41}
-        - {x: 5, y: -33}
-        - {x: -40, y: 17}
-        - {x: -54, y: 48}
-        - {x: -74, y: 73}
-        - {x: -108, y: 106}
-        - {x: -118, y: 79}
-        - {x: -118, y: -15}
-        - {x: -80, y: -26}
-        - {x: -78, y: -26}
-        - {x: -78, y: -28}
-        - {x: -76, y: -30}
-        - {x: -74, y: -30}
-        - {x: -74, y: -32}
-        - {x: -72, y: -34}
-        - {x: -70, y: -34}
-        - {x: -70, y: -36}
-        - {x: -68, y: -38}
-        - {x: -66, y: -38}
-        - {x: -66, y: -40}
-        - {x: -64, y: -42}
-        - {x: -62, y: -42}
-        - {x: -62, y: -44}
-        - {x: -60, y: -46}
-        - {x: -58, y: -46}
-        - {x: -58, y: -50}
-        - {x: -59, y: -46}
-        - {x: -62, y: -46}
-        - {x: -62, y: -44}
-        - {x: -64, y: -42}
-        - {x: -66, y: -42}
-        - {x: -66, y: -40}
-        - {x: -68, y: -38}
-        - {x: -70, y: -38}
-        - {x: -70, y: -36}
-        - {x: -72, y: -34}
-        - {x: -74, y: -34}
-        - {x: -74, y: -32}
-        - {x: -76, y: -30}
-        - {x: -78, y: -30}
-        - {x: -78, y: -28}
-        - {x: -80, y: -26}
-        - {x: -84, y: -26}
-        - {x: -91, y: -33}
-        - {x: -55, y: -110}
-        - {x: 26, y: -128}
-        - {x: 37, y: -115}
-        - {x: 39, y: -110}
-        - {x: 52, y: -110}
-        - {x: 54, y: -108}
-        - {x: 54, y: -106}
-        - {x: 64, y: -106}
-        - {x: 66, y: -104}
-        - {x: 74, y: -106}
-        - {x: 60, y: -106}
-        - {x: 58, y: -108}
-        - {x: 58, y: -110}
-        - {x: 48, y: -110}
-        - {x: 39, y: -114}
-        - {x: 32, y: -123}
-        - {x: 34, y: -130}
-        - {x: 52, y: -130}
-        - {x: 88, y: -124}
-        - {x: 118, y: -67}
-        - {x: 118, y: 76}
-        - {x: 58, y: 162}
-      - - {x: -56, y: -94}
-        - {x: -61, y: -94}
-        - {x: -62, y: -96}
-        - {x: -62, y: -101}
-        - {x: -60, y: -102}
-        - {x: -55, y: -102}
-        - {x: -54, y: -100}
-        - {x: -54, y: -95}
-      - - {x: -118, y: -30}
-        - {x: -118, y: -41}
-        - {x: -103, y: -78}
-        - {x: -85, y: -94}
-        - {x: -70, y: -94}
-        - {x: -70, y: -78}
-        - {x: -82, y: -45}
-        - {x: -107, y: -30}
-      - - {x: -101, y: -78}
-        - {x: -94, y: -78}
-        - {x: -94, y: -70}
-        - {x: -102, y: -70}
-        - {x: -102, y: -76}
-      - - {x: -22, y: 134}
-        - {x: -22, y: 108}
-        - {x: -21, y: 98}
-        - {x: 3, y: 77}
-        - {x: 11, y: 74}
-        - {x: 18, y: 74}
-        - {x: 18, y: 85}
-        - {x: -11, y: 134}
+      outline: []
+      tessellationDetail: -1
     outline: []
   spritePackingTag: 
   userData: 

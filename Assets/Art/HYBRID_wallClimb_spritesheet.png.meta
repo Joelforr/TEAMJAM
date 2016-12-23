@@ -10,12 +10,12 @@ TextureImporter:
     21300006: HYBRID_wallClimb_spritesheet_3
     21300008: HYBRID_wallClimb_spritesheet_4
     21300010: HYBRID_wallClimb_spritesheet_5
-  serializedVersion: 2
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
@@ -27,23 +27,19 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -51,12 +47,36 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: HYBRID_wallClimb_spritesheet_0
+    - serializedVersion: 2
+      name: HYBRID_wallClimb_spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -66,27 +86,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 25, y: 186}
-        - {x: 22, y: 186}
-        - {x: -25, y: 177}
-        - {x: -96, y: 186}
-        - {x: -128, y: 186}
-        - {x: -128, y: 169}
-        - {x: -126, y: 164}
-        - {x: -128, y: 165}
-        - {x: -128, y: 28}
-        - {x: -122, y: -56}
-        - {x: -92, y: -76}
-        - {x: -128, y: -128}
-        - {x: -128, y: -160}
-        - {x: -45, y: -115}
-        - {x: -6, y: -218}
-        - {x: 16, y: -218}
-        - {x: 7, y: -196}
-        - {x: 54, y: -124}
-        - {x: 54, y: 135}
-    - name: HYBRID_wallClimb_spritesheet_1
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: HYBRID_wallClimb_spritesheet_1
       rect:
         serializedVersion: 2
         x: 256
@@ -96,25 +99,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 22, y: 186}
-        - {x: -27, y: 184}
-        - {x: -64, y: 186}
-        - {x: -128, y: 186}
-        - {x: -128, y: 169}
-        - {x: -126, y: 164}
-        - {x: -128, y: 163}
-        - {x: -128, y: 34}
-        - {x: -93, y: -76}
-        - {x: -128, y: -120}
-        - {x: -128, y: -161}
-        - {x: -57, y: -123}
-        - {x: -11, y: -218}
-        - {x: 16, y: -218}
-        - {x: 7, y: -196}
-        - {x: 54, y: -149}
-        - {x: 54, y: 179}
-    - name: HYBRID_wallClimb_spritesheet_2
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: HYBRID_wallClimb_spritesheet_2
       rect:
         serializedVersion: 2
         x: 512
@@ -124,26 +112,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 54, y: 120}
-        - {x: 49, y: 178}
-        - {x: 22, y: 190}
-        - {x: -27, y: 188}
-        - {x: -75, y: 147}
-        - {x: -113, y: 190}
-        - {x: -128, y: 190}
-        - {x: -128, y: 22}
-        - {x: -112, y: -51}
-        - {x: -128, y: -131}
-        - {x: -128, y: -157}
-        - {x: -123, y: -158}
-        - {x: -62, y: -84}
-        - {x: -11, y: -218}
-        - {x: 16, y: -218}
-        - {x: 7, y: -196}
-        - {x: 47, y: -114}
-        - {x: 54, y: -108}
-    - name: HYBRID_wallClimb_spritesheet_3
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: HYBRID_wallClimb_spritesheet_3
       rect:
         serializedVersion: 2
         x: 0
@@ -153,26 +125,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 54, y: 120}
-        - {x: 49, y: 178}
-        - {x: 22, y: 190}
-        - {x: -27, y: 188}
-        - {x: -75, y: 147}
-        - {x: -113, y: 190}
-        - {x: -128, y: 190}
-        - {x: -128, y: 22}
-        - {x: -112, y: -51}
-        - {x: -128, y: -131}
-        - {x: -128, y: -157}
-        - {x: -123, y: -158}
-        - {x: -62, y: -84}
-        - {x: -11, y: -218}
-        - {x: 16, y: -218}
-        - {x: 7, y: -196}
-        - {x: 47, y: -114}
-        - {x: 54, y: -108}
-    - name: HYBRID_wallClimb_spritesheet_4
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: HYBRID_wallClimb_spritesheet_4
       rect:
         serializedVersion: 2
         x: 256
@@ -182,25 +138,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 22, y: 186}
-        - {x: -27, y: 184}
-        - {x: -64, y: 186}
-        - {x: -128, y: 186}
-        - {x: -128, y: 169}
-        - {x: -126, y: 164}
-        - {x: -128, y: 163}
-        - {x: -128, y: 34}
-        - {x: -93, y: -76}
-        - {x: -128, y: -120}
-        - {x: -128, y: -161}
-        - {x: -57, y: -123}
-        - {x: -11, y: -218}
-        - {x: 16, y: -218}
-        - {x: 7, y: -196}
-        - {x: 54, y: -149}
-        - {x: 54, y: 179}
-    - name: HYBRID_wallClimb_spritesheet_5
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: HYBRID_wallClimb_spritesheet_5
       rect:
         serializedVersion: 2
         x: 512
@@ -210,21 +151,8 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 27, y: 182}
-        - {x: 0, y: 182}
-        - {x: -25, y: 177}
-        - {x: -78, y: 182}
-        - {x: -128, y: 182}
-        - {x: -128, y: -154}
-        - {x: -123, y: -156}
-        - {x: -39, y: -97}
-        - {x: -10, y: -208}
-        - {x: -4, y: -218}
-        - {x: 16, y: -218}
-        - {x: 7, y: -196}
-        - {x: 54, y: -124}
-        - {x: 54, y: 135}
+      outline: []
+      tessellationDetail: -1
     outline: []
   spritePackingTag: 
   userData: 

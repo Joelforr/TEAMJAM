@@ -9,12 +9,12 @@ TextureImporter:
     21300004: MONSTER_Jump_SpritesheetBig_2
     21300006: MONSTER_Jump_SpritesheetBig_3
     21300008: MONSTER_Jump_SpritesheetBig_4
-  serializedVersion: 2
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
@@ -26,23 +26,19 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -50,12 +46,36 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: MONSTER_Jump_SpritesheetBig_0
+    - serializedVersion: 2
+      name: MONSTER_Jump_SpritesheetBig_0
       rect:
         serializedVersion: 2
         x: 0
@@ -65,26 +85,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -38, y: -157.5}
-        - {x: 7, y: -157.5}
-        - {x: 9, y: -155.5}
-        - {x: 11, y: -150.5}
-        - {x: 26, y: -145.5}
-        - {x: 92, y: -70.5}
-        - {x: 98, y: 6.5}
-        - {x: 98, y: 137.5}
-        - {x: 62, y: 157.5}
-        - {x: 20, y: 157.5}
-        - {x: -115, y: 122.5}
-        - {x: -117, y: 104.5}
-        - {x: -117, y: -167.5}
-        - {x: -105, y: -171.5}
-        - {x: -30, y: -171.5}
-        - {x: -31, y: -164.5}
-        - {x: -53, y: -149.5}
-        - {x: -46, y: -153.5}
-    - name: MONSTER_Jump_SpritesheetBig_1
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: MONSTER_Jump_SpritesheetBig_1
       rect:
         serializedVersion: 2
         x: 384
@@ -94,31 +98,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -31, y: -158.5}
-        - {x: 16, y: -158.5}
-        - {x: 20, y: -150.5}
-        - {x: 5, y: -140.5}
-        - {x: -12, y: -133.5}
-        - {x: -20, y: -115.5}
-        - {x: -8, y: -128.5}
-        - {x: 6, y: -140.5}
-        - {x: 10, y: -141.5}
-        - {x: 32, y: -125.5}
-        - {x: 90, y: -81.5}
-        - {x: 90, y: 146.5}
-        - {x: 15, y: 146.5}
-        - {x: -79, y: 81.5}
-        - {x: -103, y: 42.5}
-        - {x: -123, y: -5.5}
-        - {x: -123, y: -139.5}
-        - {x: -100, y: -159.5}
-        - {x: -94, y: -163.5}
-        - {x: -38, y: -163.5}
-        - {x: -39, y: -156.5}
-        - {x: -61, y: -141.5}
-        - {x: -43, y: -153.5}
-    - name: MONSTER_Jump_SpritesheetBig_2
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: MONSTER_Jump_SpritesheetBig_2
       rect:
         serializedVersion: 2
         x: 768
@@ -128,26 +111,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 120, y: 11.5}
-        - {x: 120, y: 187.5}
-        - {x: 47, y: 187.5}
-        - {x: -56, y: 105.5}
-        - {x: -97, y: 13.5}
-        - {x: -81, y: -73.5}
-        - {x: -120, y: -109.5}
-        - {x: -120, y: -135.5}
-        - {x: -107, y: -171.5}
-        - {x: -85, y: -180.5}
-        - {x: -50, y: -180.5}
-        - {x: -47, y: -173.5}
-        - {x: -45, y: -187.5}
-        - {x: -36, y: -190.5}
-        - {x: 13, y: -190.5}
-        - {x: 0, y: -135.5}
-        - {x: 65, y: -118.5}
-        - {x: 93, y: -66.5}
-    - name: MONSTER_Jump_SpritesheetBig_3
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: MONSTER_Jump_SpritesheetBig_3
       rect:
         serializedVersion: 2
         x: 0
@@ -157,32 +124,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 24, y: 182.5}
-        - {x: -68, y: 80.5}
-        - {x: -87, y: 7.5}
-        - {x: -126, y: -89.5}
-        - {x: -126, y: -129.5}
-        - {x: -112, y: -164.5}
-        - {x: -91, y: -174.5}
-        - {x: -56, y: -174.5}
-        - {x: -53, y: -167.5}
-        - {x: -79, y: -139.5}
-        - {x: -64, y: -107.5}
-        - {x: -37, y: -98.5}
-        - {x: -33, y: -94.5}
-        - {x: -32, y: -90.5}
-        - {x: -27, y: -86.5}
-        - {x: -29, y: -88.5}
-        - {x: -29, y: -92.5}
-        - {x: -37, y: -99.5}
-        - {x: -70, y: -121.5}
-        - {x: -65, y: -148.5}
-        - {x: -37, y: -185.5}
-        - {x: 28, y: -185.5}
-        - {x: 117, y: -92.5}
-        - {x: 117, y: 182.5}
-    - name: MONSTER_Jump_SpritesheetBig_4
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: MONSTER_Jump_SpritesheetBig_4
       rect:
         serializedVersion: 2
         x: 384
@@ -192,24 +137,8 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 120, y: 161.5}
-        - {x: 119, y: 178.5}
-        - {x: 118, y: 179.5}
-        - {x: 54, y: 179.5}
-        - {x: 15, y: 137.5}
-        - {x: -70, y: 110.5}
-        - {x: -120, y: -43.5}
-        - {x: -120, y: -144.5}
-        - {x: -87, y: -172.5}
-        - {x: -50, y: -166.5}
-        - {x: -47, y: -159.5}
-        - {x: -41, y: -166.5}
-        - {x: -29, y: -179.5}
-        - {x: 14, y: -179.5}
-        - {x: 14, y: -173.5}
-        - {x: 77, y: -103.5}
-        - {x: 120, y: 26.5}
+      outline: []
+      tessellationDetail: -1
     outline: []
   spritePackingTag: 
   userData: 
