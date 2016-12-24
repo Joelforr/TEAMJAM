@@ -47,8 +47,8 @@ public class Death : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D collider) {
 		if (collider.gameObject.tag == "DeathZone"){
-            
-            Debug.Log("You're Dead, Love " + collider.gameObject.name);
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+            /*Debug.Log("You're Dead, Love " + collider.gameObject.name);
 
             // finds and destroys the blocks on each death
             Pushable = GameObject.Find("Pushable");
@@ -110,7 +110,7 @@ public class Death : MonoBehaviour {
         {
            // Debug.Log("check");
            //set checkpoint
-            CheckPos = collider.bounds.center;
+            CheckPos = collider.bounds.center;*/
         }
 	}
 
