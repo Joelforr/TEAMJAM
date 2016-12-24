@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
 
@@ -103,7 +104,7 @@ public class PlayerManager : MonoBehaviour {
 			motorScript.extraJumpHeight = uncloakedExtraJumpHeight;
 			motorScript.numOfAirJumps = uncloakedNumOfAirJumps;
 			motorScript.enableDestruction = false;
-			motorScript.enableObjectPushing = true;
+			motorScript.enableObjectPushing = false;
 			motorScript.enableWallSticks = true;
 			motorScript.enableWallJumps = true;
 			motorScript.enableWallSlides = true;
@@ -194,11 +195,11 @@ public class PlayerManager : MonoBehaviour {
             else if (worldManagerScript.levelsCompletedList.Contains(3)){
 				currentState = PlayerState.Uncloaked_Form3;
 			}
-			else if(worldManagerScript.levelsCompletedList.Contains(2)){
+			else if(worldManagerScript.levelsCompletedList.Contains(2) || SceneManager.GetActiveScene().buildIndex == 3){
 				currentState = PlayerState.Uncloaked_Form2;			
 				}
 			else /*if(worldManagerScript.levelsCompletedList.Contains(1))*/{
-					currentState = PlayerState.Uncloaked_Form3;
+					currentState = PlayerState.Uncloaked_Form1;
 				}
 		}
 		else if (currentState == PlayerState.Uncloaked_Form1 || 

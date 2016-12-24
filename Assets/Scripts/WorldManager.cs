@@ -74,7 +74,14 @@ public class WorldManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(thePlayer == null){
+			thePlayer = FindObjectOfType<PlayerManager>();
+		}
 
+		if(Input.GetKeyDown(KeyCode.R)){
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+		}
+		gatesWithinSceneList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Gate"));
 	}
 
 
