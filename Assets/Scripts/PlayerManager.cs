@@ -188,14 +188,14 @@ public class PlayerManager : MonoBehaviour {
 		print ("CurState" + currentState);
 		if (currentState == PlayerState.Cloaked){
             //Dont actually know level values fix this when levels are organized in editor
-            if (worldManagerScript.levelsCompletedList.Contains(4))
+            if (worldManagerScript.levelsCompletedList.Contains(5))
             {
                 currentState = PlayerState.Monster;
             }
-            else if (worldManagerScript.levelsCompletedList.Contains(3)){
+            else if (worldManagerScript.levelsCompletedList.Contains(4)){
 				currentState = PlayerState.Uncloaked_Form3;
 			}
-			else if(worldManagerScript.levelsCompletedList.Contains(2) || SceneManager.GetActiveScene().buildIndex == 3){
+			else if(worldManagerScript.levelsCompletedList.Contains(3) || SceneManager.GetActiveScene().buildIndex == 4){
 				currentState = PlayerState.Uncloaked_Form2;			
 				}
 			else /*if(worldManagerScript.levelsCompletedList.Contains(1))*/{

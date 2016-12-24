@@ -14,6 +14,8 @@ public class DeleteDustEffect : MonoBehaviour {
 			triggerBox.gameObject.SetActive(false);
 			leftDust.gameObject.SetActive(true);
 			rightDust.gameObject.SetActive(true);
+			AudioSource boom = GetComponent<AudioSource>();
+			boom.Play();
 		}
 	}
 }
