@@ -9,6 +9,8 @@ public class PlatformerMotor2D : MonoBehaviour
 {
     #region Public
 
+   
+
     /// <summary>
     /// The static environment check mask. This should only be environment that doesn't move.
     /// </summary>
@@ -2625,14 +2627,20 @@ public class PlatformerMotor2D : MonoBehaviour
 						_collidedNormals[DIRECTION_LEFT] == Vector2.right ||
 						interactableObjectsHit[i].collider.tag == "DestructableWall" &&
 						_velocity.x == maxSpeed &&
-						_collidedNormals[DIRECTION_RIGHT] == Vector2.left||
-						interactableObjectsHit[i].collider.tag == "DestructableGround" &&
-						_prevAmountFallen >= minDistanceToGroundSlam &&
-						_collidedNormals[DIRECTION_DOWN] == Vector2.up)
+						_collidedNormals[DIRECTION_RIGHT] == Vector2.left)
 					{
-						Destroy (interactableObjectsHit [i].collider.gameObject);
-						UpdateSurroundings (true);
+                         interactableObjectsHit[i].collider.gameObject.GetComponent<UnityEngine.Animator>().Play("STATUE_BREAK"); 
+                        Destroy(interactableObjectsHit[i].collider.gameObject.GetComponent<Collider2D>());
+                        UpdateSurroundings (true);
 					}
+
+                    if(interactableObjectsHit[i].collider.tag == "DestructableGround" &&
+                        _prevAmountFallen >= minDistanceToGroundSlam &&
+                        _collidedNormals[DIRECTION_DOWN] == Vector2.up)
+                    {
+                        Destroy(interactableObjectsHit[i].collider.gameObject);
+                        UpdateSurroundings(true);
+                    }
 
 
 					// If im running at a static wall set my velocity to 0
